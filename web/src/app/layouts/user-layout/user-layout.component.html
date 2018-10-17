@@ -1,0 +1,42 @@
+<mdb-navbar SideClass="navbar navbar-expand-lg navbar-dark indigo">
+
+    <mdb-navbar-brand>
+        <a class="navbar-brand" href="#">
+            <strong>Book A Book</strong>
+        </a>
+    </mdb-navbar-brand>
+
+    <links>
+
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item" [routerLinkActive]="['active']">
+                <a class="nav-link waves-light" [routerLink]="['/home']" mdbRippleRadius>Home</a>
+            </li>
+            <li class="nav-item" [routerLinkActive]="['active']">
+                <a class="nav-link waves-light" [routerLink]="['/categorias']" mdbRippleRadius>Categorías</a>
+            </li>
+            <li class="nav-item" [routerLinkActive]="['active']">
+                <a class="nav-link waves-light" [routerLink]="['/mis-libros']" mdbRippleRadius>Mis libros</a>
+            </li>
+        </ul>
+
+        <ul class="navbar-nav">
+            <li class="nav-item" [routerLinkActive]="['active']">
+                <a class="nav-link waves-effect waver-light">
+                    {{user}}
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link waves-effect waver-light" [routerLink]="['/login']">
+                    Salir
+                </a>
+            </li>
+        </ul>
+
+    </links>
+
+</mdb-navbar>
+
+<router-outlet>
+    <div style="height: 45px"></div>
+</router-outlet>
