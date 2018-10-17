@@ -1,32 +1,37 @@
 import { 
-    addNewContact, 
-    getContacts, 
-    getContactWithID, 
-    updateContact,
-    deleteContact 
-} from '../controllers/crmController';
+    addNewBook,
+    addNewBooks, 
+    getBooks, 
+    getBookWithID, 
+    updateBook,
+    deleteBook 
+} from '../controllers/bookController';
 
 const routes = (app) => {
-    app.route('/contact')
+    app.route('/book')
     .get((req, res, next) => {
         // middleware
         console.log(`Request from: ${req.originalUrl}`)
         console.log(`Request type: ${req.method}`)
         next();
-    }, getContacts)
+    }, getBooks)
     
     // POST endpoint
-    .post(addNewContact);
+    .post(addNewBook);
 
-    app.route('/contact/:contactId')
-    // get specific contact
-    .get(getContactWithID)
+    app.route('/book/:bookId')
+    // get specific book
+    .get(getBookWithID)
     
     // put request
-    .put(updateContact)
+    .put(updateBook)
 
     // delete request
-    .delete(deleteContact);
+    .delete(deleteBook);
+
+    app.route('/addAll')
+    .post(addNewBooks)
+
 }
 
 export default routes;
