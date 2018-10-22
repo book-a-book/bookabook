@@ -2,10 +2,16 @@ language: node_js
 node_js:
   - stable 
 
+git:
+  depth: 1
+cache:
+  directories:
+    - web/node_modules
+
 before_script:
   - npm install -g @angular/cli
 
 script:
   - cd web
   - npm install
-  - ng test --watch false -cc
+  - ng test
