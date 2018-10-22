@@ -7,4 +7,5 @@ before_script:
 
 script:
   - cd web
+  - npm install
   - ng test --watch false -cc
