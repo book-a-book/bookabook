@@ -25,12 +25,19 @@ import { MDBBootstrapModule } from 'angular-bootstrap-md';
   imports: [
     routing,
     BrowserModule,
-    MDBBootstrapModule.forRoot()
+    MDBBootstrapModule.forRoot(),
   ],
   providers: [
-    AuthGuard
+    AuthGuard,
   ],
   bootstrap: [AppComponent],
-  exports: [CategoryComponent, HomeComponent, MyBooksComponent, PublicLayoutComponent, UserLayoutComponent, LoginComponent]
+  exports: [
+    CategoryComponent,
+    HomeComponent,
+    MyBooksComponent,
+    PublicLayoutComponent,
+    UserLayoutComponent,
+    LoginComponent,
+  ],
 })
 export class AppModule { }
