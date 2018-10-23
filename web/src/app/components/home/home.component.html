@@ -1,3 +1,49 @@
-<p>
-  home works!
-</p>
+<div class="container">
+
+  <div class="row">
+
+    <div class="col-md-12">
+
+      <div class="search-bar container-fluid mb-4">
+        <div class="md-form">
+          <i class="fa fa-search prefix"></i>
+          <input mdbInputDirective placeholder="BUSCAR" type="text" id="searchForm" class="form-control">
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="row">
+
+    <div class="col-md-12 categories-div">
+
+      <button mdbBtn type="button" color="primary" class="waves-light" mdbWavesEffect>Acción</button>
+      <button mdbBtn type="button" color="default" class="waves-light" mdbWavesEffect>Aventura</button>
+      <button mdbBtn type="button" color="secondary" class="waves-light" mdbWavesEffect>Misterio</button>
+      <button mdbBtn type="button" color="success" class="waves-light" mdbWavesEffect>Comedia</button>
+      <button mdbBtn type="button" color="info" class="waves-light" mdbWavesEffect>Thriller</button>
+      <button mdbBtn type="button" color="warning" class="waves-light" mdbWavesEffect>Suspenso</button>
+
+    </div>
+
+  </div>
+
+  <div class="row mt-3">
+
+    <div class="col-md-12 text-center mt-3">
+      <h2>TOP 10</h2>
+    </div>
+
+    <div class="col-md-12 mt-3 slider-container">
+
+      <div *ngFor="let slide of imagesUrl">
+        <img src="{{slide}}">
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
