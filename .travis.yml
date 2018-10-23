@@ -2,8 +2,13 @@ language: node_js
 node_js:
   - stable 
 
+env:
+  - CHROME_BIN=/usr/bin/google-chrome
+  - DISPLAY=:99.0
 git:
   depth: 1
+addons:
+  chrome: stable
 cache:
   directories:
     - web/node_modules
@@ -13,5 +18,6 @@ before_script:
 
 script:
   - cd web
+  - npm config set loglevel warn
   - npm install
   - ng test
