@@ -21,4 +21,4 @@ script:
   - cd web
   - npm config set loglevel warn
   - npm install
-  - ng test
+  - ng test --watch=false
