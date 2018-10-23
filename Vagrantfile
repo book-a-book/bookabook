@@ -28,7 +28,6 @@ Vagrant.configure("2") do |config|
         npm install -g @angular/cli
 
         cd /vagrant/web
-        sudo chown -R $USER:$(id -gn $USER) /home/vagrant/.config
         npm install
     SHELL
     config.vm.hostname = "srv01"
