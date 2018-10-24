@@ -25,7 +25,7 @@ Vagrant.configure("2") do |config|
         sudo npm install -g n
         sudo n stable
 
-        npm install -g @angular/cli
+        sudo npm install --quiet -g @angular/cli@6.0.8
 
         cd /vagrant/web
         npm install
