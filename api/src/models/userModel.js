@@ -36,7 +36,7 @@ export const UserSchema = new Schema({
 
 // hash the password
 UserSchema.methods.generateHash = function(password) {
-    return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
+    return bcrypt.hashSync(password, bcrypt.genSaltSync(10));
   };
   
 // checking if password is valid

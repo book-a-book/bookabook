@@ -1,6 +1,7 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import bodyParser from 'body-parser';
+import userRoutes from './src/routes/userRoutes';
 import routes from './src/routes/bookRoutes';
 
 const app = express();
@@ -17,6 +18,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 routes(app);
+userRoutes(app);
 
 // serving static files
 app.use(express.static('public'));
