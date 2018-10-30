@@ -13,7 +13,7 @@ const routes = (app) => {
         // middleware
         console.log(`Request from: ${req.originalUrl}`)
         console.log(`Request type: ${req.method}`)
-        next();
+
     }, getBooks)
     
     // POST endpoint

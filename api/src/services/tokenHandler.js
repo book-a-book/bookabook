@@ -11,4 +11,18 @@ export function createToken(user) {
       .unix()
   };
   return jwt.encode(payload, config.TOKEN_SECRET);
+};
+
+export function ensureAuthenticated(req, res, next) {
+  if (!req.headers.authorization) {
+    return res.status(403).send({ message: "You need to include token" });
+  }
+  var token = req.headers.authorization.split(" ")[1];
+  var payload = jwt.decode(token, config.TOKEN_SECRET);
+
+  if (payload.exp <= moment().unix()) {
+    return res.status(401).send({ message: "The token is expired" });
+  }
+  req.user = payload.sub;
+  next();
 }
