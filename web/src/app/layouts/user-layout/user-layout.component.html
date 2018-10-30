@@ -9,14 +9,17 @@
     <links>
 
         <ul class="navbar-nav mr-auto">
-            <li class="nav-item" [routerLinkActive]="['active']">
-                <a class="nav-link waves-light" [routerLink]="['/home']" mdbRippleRadius>Home</a>
+            <li class="nav-item">
+                <a class="nav-link waves-light" [routerLink]="['/home']" [routerLinkActive]="['active']"
+                    mdbRippleRadius>Home</a>
             </li>
-            <li class="nav-item" [routerLinkActive]="['active']">
-                <a class="nav-link waves-light" [routerLink]="['/categorias']" mdbRippleRadius>Categorías</a>
+            <li class="nav-item">
+                <a class="nav-link waves-light" [routerLink]="['/categorias']" [routerLinkActive]="['active']"
+                    mdbRippleRadius>Categorías</a>
             </li>
-            <li class="nav-item" [routerLinkActive]="['active']">
-                <a class="nav-link waves-light" [routerLink]="['/mis-libros']" mdbRippleRadius>Mis libros</a>
+            <li class="nav-item">
+                <a class="nav-link waves-light" [routerLink]="['/mis-libros']" [routerLinkActive]="['active']"
+                    mdbRippleRadius>Mis libros</a>
             </li>
         </ul>
 
