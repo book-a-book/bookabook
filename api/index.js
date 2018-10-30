@@ -2,6 +2,7 @@ import express from 'express';
 import mongoose from 'mongoose';
 import bodyParser from 'body-parser';
 import routes from './src/routes/crmRoutes';
+import userRoutes from './src/routes/userRoutes';
 
 const app = express();
 const PORT = 3000;
@@ -17,6 +18,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 routes(app);
+userRoutes(app);
 
 // serving static files
 app.use(express.static('public'));
