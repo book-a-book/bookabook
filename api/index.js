@@ -1,8 +1,8 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import bodyParser from 'body-parser';
-import routes from './src/routes/bookRoutes';
 import userRoutes from './src/routes/userRoutes';
+import routes from './src/routes/bookRoutes';
 
 const app = express();
 const PORT = 3000;
