@@ -20,7 +20,7 @@ Vagrant.configure("2") do |config|
         sudo apt-get update
         sudo apt-get upgrade -y
 
-        ./vagrant/install_mongodb.sh
+        /vagrant/vagrant/install_mongodb.sh 
         sudo apt-get install google-chrome-stable npm -y
         sudo npm cache clean -f
         sudo npm install -g n
