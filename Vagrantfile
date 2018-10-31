@@ -23,7 +23,7 @@ Vagrant.configure("2") do |config|
         sudo apt-get install google-chrome-stable npm -y
         sudo npm cache clean -f
         sudo npm install -g n
-        sudo n stable
+        sudo n 10.13.0
 
         sudo npm install --quiet -g @angular/cli@6.0.8
 
