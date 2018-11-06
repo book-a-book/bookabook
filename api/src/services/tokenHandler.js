@@ -14,6 +14,7 @@ export function createToken(user) {
 };
 
 export function ensureAuthenticated(req, res, next) {
+  console.log(req);
   if (!req.headers.authorization) {
     return res.status(403).send({ message: "You need to include token" });
   }

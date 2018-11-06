@@ -2,6 +2,8 @@ import mongoose from 'mongoose';
 import { UserSchema } from '../models/userModel';
 import {createToken} from '../services/tokenHandler';
 
+
+
 const User = mongoose.model('User', UserSchema);
 
 
