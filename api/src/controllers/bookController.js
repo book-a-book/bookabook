@@ -4,6 +4,8 @@ import { BookSchema } from '../models/bookModel';
 const Book = mongoose.model('Book', BookSchema);
 
 export const addNewBook = (req, res) => {
+
+    
     let newBook = new Book(req.body);
 
     newBook.save((err, book) => {

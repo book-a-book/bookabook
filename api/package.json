@@ -10,8 +10,10 @@
   "author": "Emmanuel Henri",
   "license": "ISC",
   "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.17.2",
     "express": "^4.15.4",
+    "jwt-simple": "^0.5.5",
     "mongoose": "^4.11.10",
     "nodemon": "^1.12.0"
   },
