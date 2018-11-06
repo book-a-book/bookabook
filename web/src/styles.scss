@@ -1,0 +1,15 @@
+.search-bar {
+    border: 1px solid dimgrey;
+    border-radius: 10px;
+    .fa-search {
+        padding-top: 6px;
+        font-size: 1.5em;
+    }
+    .md-form {
+        margin: 0px;
+        input {
+            padding-bottom: 3px;
+            padding-top: 10px;
+        }
+    }
+}
