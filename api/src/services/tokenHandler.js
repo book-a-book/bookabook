@@ -14,6 +14,9 @@ export function createToken(user) {
 };
 
 export function ensureAuthenticated(req, res, next) {
+  console.log(req);
+  if (req.originalUrl == '/login/' || req.originalUrl == '/register/')
+  {
   if (!req.headers.authorization) {
     return res.status(403).send({ message: "You need to include token" });
   }
@@ -24,5 +27,10 @@ export function ensureAuthenticated(req, res, next) {
     return res.status(401).send({ message: "The token is expired" });
   }
   req.user = payload.sub;
+  }
+  else
+  {
+    
+  }
   next();
 }

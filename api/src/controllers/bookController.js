@@ -3,16 +3,21 @@ import { BookSchema } from '../models/bookModel';
 
 const Book = mongoose.model('Book', BookSchema);
 
-export const addNewBook = (req, res) => {
 
-    
+
+export const addNewBook = (req, res, next) => {
+
+    console.log(req.user)
     let newBook = new Book(req.body);
+    newBook.owner = req.user;
 
     newBook.save((err, book) => {
         if (err) {
             res.send(err);
         }
+        console.log("se guardo")
         res.json(book);
+        
     });
 };
 
