@@ -4,6 +4,8 @@ import bodyParser from 'body-parser';
 import userRoutes from './src/routes/userRoutes';
 import routes from './src/routes/bookRoutes';
 
+var middleware = require("./src/services/tokenHandler");
+
 const app = express();
 const PORT = 3000;
 
@@ -16,7 +18,7 @@ mongoose.connect('mongodb://localhost/CRMdb', {
 // bodyparser setup
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-
+app.use(middleware.ensureAuthenticated);
 routes(app);
 userRoutes(app);
 

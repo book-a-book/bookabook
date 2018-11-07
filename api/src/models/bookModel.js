@@ -27,7 +27,12 @@ export const BookSchema = new Schema({
        type: Date,
        default: Date.now 
     },
-    owner: String,
+    owner: 
+    {
+        type: String,
+        required: 'Enter an owner'
+    },
+
 
     lendTo: String
 });
