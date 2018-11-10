@@ -5,13 +5,12 @@ const Schema = mongoose.Schema;
 
 export const UserSchema = new Schema({
     name: {
-        type: String
+        type: String,
+        required: 'Enter a name'
     },
     lastName: {
-        type: String
-    },
-    email: {
-        type: String
+        type: String,
+        required: 'Enter a last name'
     },
     username: {
         type: String,
@@ -21,22 +20,34 @@ export const UserSchema = new Schema({
         type: String,
         required: 'Enter a password'
     },
-
-    isActive: {
-        type: Boolean
-    },
     picture: {
         type: String
     },
     created_date: {
        type: Date,
        default: Date.now 
+    },
+    borrow: {
+       type: Number,
+       default: 0  
+    },
+    lend: {
+       type: Number,
+       default: 0  
+    },
+    total: {
+       type: Number,
+       default: 0  
+    },
+    rating: {
+       type: Number,
+       default: 0  
     }
 });
 
 // hash the password
 UserSchema.methods.generateHash = function(password) {
-    return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
+    return bcrypt.hashSync(password, bcrypt.genSaltSync(10));
   };
   
 // checking if password is valid
