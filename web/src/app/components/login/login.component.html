@@ -1,6 +1,6 @@
 <h1>Bienvenidos a Book a Book!</h1>
 <form (ngSubmit)="login()">
-    <input type="text" ngModel name="username" placeholder="Usuario" required>
-    <input type="password" ngModel name="password" placeholder="Contraseña" required>
+    <input type="text" [(ngModel)]="username" name="username" placeholder="Usuario" required>
+    <input type="password" [(ngModel)]="password" name="password" placeholder="Contraseña" required>
     <button type="submit">Login</button>
 </form>
