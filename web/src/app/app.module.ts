@@ -13,6 +13,9 @@ import { routing } from './app.routing';
 import { AuthGuard } from './guards/auth.guard';
 
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
+import { HttpModule } from '@angular/http';
+import { BookService } from './services/book.service';
+import { AppConfig } from './app.config';
 
 @NgModule({
   declarations: [
@@ -27,11 +30,14 @@ import { MDBBootstrapModule } from 'angular-bootstrap-md';
   imports: [
     routing,
     BrowserModule,
+    HttpModule,
     BrowserAnimationsModule,
     MDBBootstrapModule.forRoot()
   ],
   providers: [
+    AppConfig,
     AuthGuard,
+    BookService
   ],
   bootstrap: [AppComponent],
   exports: [

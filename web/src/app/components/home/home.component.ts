@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { BookService } from 'src/app/services/book.service';
 
 @Component({
   selector: 'app-home',
@@ -9,7 +10,7 @@ export class HomeComponent implements OnInit {
 
   public imagesUrl;
 
-  constructor() { }
+  constructor(private bookService: BookService) { }
 
   ngOnInit() {
     this.imagesUrl = [
@@ -20,6 +21,9 @@ export class HomeComponent implements OnInit {
       'assets/images/Image_5.png',
       // 'assets/images/Image_6.png',
     ];
+
+    this.bookService.getAll()
+      .subscribe(books => console.log(books));
   }
 
 }
