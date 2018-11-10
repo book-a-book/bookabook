@@ -8,6 +8,7 @@ var config = require("../config/config");
 const User = mongoose.model("User", UserSchema);
 
 module.exports = function(req, res, next) {
+  console.log("authentra");
   if (!req.headers.authorization) {
     return res.status(401).send({ message: "You need to include token" });
   }
@@ -23,7 +24,7 @@ module.exports = function(req, res, next) {
   if (!user) {
     return res.status(401).send({ message: "Invlid Request" });
   }
-
+  console.log("authtermina");
   req.user = payload.sub;
   next();
 };
