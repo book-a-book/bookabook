@@ -4,7 +4,6 @@ import { BookSchema } from "./bookModel";
 const Book = mongoose.model("Book", BookSchema);
 
 export const addNewBook = (req, res, next) => {
-  console.log(req.user);
   let newBook = new Book(req.body);
   newBook.owner = req.user;
 
@@ -12,24 +11,27 @@ export const addNewBook = (req, res, next) => {
     if (err) {
       res.send(err);
     }
-    console.log("se guardo");
     res.json(book);
   });
 };
 
 export const addNewBooks = (req, res) => {
-  let books = req.body.books;
-  console.log(books);
-  for (let i = 0; i < books.length; i++) {
-    let newBook = new Book(books[i]);
-    newBook.save((err, book) => {
-      if (err) {
-        res.send(err);
-      }
-    });
-  }
-  res.json({ message: "Successfully added all books" });
+  const books = req.body;
+
+  addBooks(books, req.user)
+    .then(response => res.json({ message: 'Successfully added all books' }))
+    .catch(err => res.status(500).send('Cannot save books'))
 };
+
+async function addBooks(books, owner) {
+  books.forEach(book => {
+    let newBook = new Book(book);
+    newBook.owner = owner;
+    newBook.save((err, newBook) => {
+      if (err) throw new Error(err);
+    });
+  });
+}
 
 export const getBooks = (req, res) => {
   Book.find({}, (err, book) => {
