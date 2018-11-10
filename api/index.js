@@ -1,34 +1,35 @@
-import express from 'express';
-import mongoose from 'mongoose';
-import bodyParser from 'body-parser';
-import userRoutes from './src/routes/userRoutes';
-import routes from './src/routes/bookRoutes';
+import express from "express";
+import mongoose from "mongoose";
+import bodyParser from "body-parser";
+const routes = require("./src/routes");
+const cors = require("cors");
 
-var middleware = require("./src/services/tokenHandler");
+const dotenv = require('dotenv');
+dotenv.config();
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT;
 
 // mongoose connection
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://localhost/CRMdb', {
-    useMongoClient: true
-});
+mongoose.connect(process.env.MONGO_URI, {
+  useMongoClient: true
+}
+);
 
 // bodyparser setup
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-app.use(middleware.ensureAuthenticated);
+app.use(cors);
 routes(app);
-userRoutes(app);
 
 // serving static files
-app.use(express.static('public'));
+app.use(express.static("public"));
 
-app.get('/', (req, res) =>
-    res.send(`Node and express server is running on port ${PORT}`)
+app.get("/", (req, res) =>
+  res.send(`Node and express server is running on port ${PORT}`)
 );
 
 app.listen(PORT, () =>
-    console.log(`Back-end server is running on port ${PORT}`)
+  console.log(`Back-end server is running on port ${PORT}`)
 );

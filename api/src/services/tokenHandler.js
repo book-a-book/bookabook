@@ -1,6 +1,5 @@
 import jwt from "jwt-simple";
-import moment from  "moment";
-import config from  "../config/config";
+import moment from "moment";
 
 export function createToken(user) {
   var payload = {
@@ -10,27 +9,5 @@ export function createToken(user) {
       .add(14, "days")
       .unix()
   };
-  return jwt.encode(payload, config.TOKEN_SECRET);
-};
-
-export function ensureAuthenticated(req, res, next) {
-  console.log(req);
-  if (req.originalUrl == '/login/' || req.originalUrl == '/register/')
-  {
-  if (!req.headers.authorization) {
-    return res.status(403).send({ message: "You need to include token" });
-  }
-  var token = req.headers.authorization.split(" ")[1];
-  var payload = jwt.decode(token, config.TOKEN_SECRET);
-
-  if (payload.exp <= moment().unix()) {
-    return res.status(401).send({ message: "The token is expired" });
-  }
-  req.user = payload.sub;
-  }
-  else
-  {
-    
-  }
-  next();
+  return jwt.encode(payload, process.env.TOKEN_SECRET);
 }
