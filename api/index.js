@@ -20,7 +20,7 @@ mongoose.connect(process.env.MONGO_URI, {
 // bodyparser setup
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-app.use(cors);
+app.use(cors());
 routes(app);
 
 // serving static files
