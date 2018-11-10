@@ -11,6 +11,9 @@ import { LoginComponent } from './components/login/login.component';
 import { routing } from './app.routing';
 import { AuthGuard } from './guards/auth.guard';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
+import { FormsModule } from '@angular/forms';
+import { AuthenticationService } from './services/authentication.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -26,9 +29,12 @@ import { MDBBootstrapModule } from 'angular-bootstrap-md';
     routing,
     BrowserModule,
     MDBBootstrapModule.forRoot(),
+    FormsModule,
+    HttpClientModule,
   ],
   providers: [
     AuthGuard,
+    AuthenticationService,
   ],
   bootstrap: [AppComponent],
   exports: [
