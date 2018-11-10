@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppComponent } from './app.component';
 import { CategoryComponent } from './components/category/category.component';
 import { HomeComponent } from './components/home/home.component';
@@ -11,6 +10,9 @@ import { LoginComponent } from './components/login/login.component';
 import { routing } from './app.routing';
 import { AuthGuard } from './guards/auth.guard';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
+import { EditBookModalComponent } from './components/edit-book-modal/edit-book-modal.component';
+import { NewBookModalComponent } from './components/new-book-modal/new-book-modal.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -21,11 +23,15 @@ import { MDBBootstrapModule } from 'angular-bootstrap-md';
     PublicLayoutComponent,
     UserLayoutComponent,
     LoginComponent,
+    EditBookModalComponent,
+    NewBookModalComponent,
   ],
   imports: [
     routing,
     BrowserModule,
     MDBBootstrapModule.forRoot(),
+    FormsModule
+
   ],
   providers: [
     AuthGuard,
