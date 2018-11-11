@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -13,28 +14,29 @@ export class LoginComponent implements OnInit {
   password: string;
 
   helper = new JwtHelperService();
+  loginError = false;
 
-  constructor(private authService: AuthenticationService) { }
+  constructor(
+    private authService: AuthenticationService,
+    private router: Router,
+  ) { }
 
   ngOnInit() {
-
+    if (localStorage.getItem('userId')) {
+      this.router.navigate(['/']);
+    }
   }
 
   login() {
     this.authService.login(this.username, this.password)
       .subscribe(
         (response: any) => {
-          console.log(response);
-          const res = response;
-          const decodedToken = this.helper.decodeToken(res.token);
-          console.log(decodedToken);
-
-          localStorage.setItem('token', res.token);
+          const decodedToken = this.helper.decodeToken(response.token);
           localStorage.setItem('userId', decodedToken.sub);
-          localStorage.setItem('userName', decodedToken.userName);
+          this.router.navigate(['/']);
         },
         err => {
-          console.log("Error occured");
+          this.loginError = true;
         }
       );
   }
