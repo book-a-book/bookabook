@@ -13,10 +13,10 @@ import { routing } from './app.routing';
 import { AuthGuard } from './guards/auth.guard';
 import { FeedbackRatingModalComponent } from './components/feedback-rating-modal/feedback-rating-modal.component'
 import { MDBBootstrapModule, ModalModule } from 'angular-bootstrap-md';
-import { FormsModule } from '@angular/forms';
 import { BookService } from './services/book.service';
 import { HttpClientModule } from '@angular/common/http';
 import { AppConfig } from './app.config';
+import { AuthenticationService } from './services/authentication.service';
 
 @NgModule({
   declarations: [
@@ -36,13 +36,14 @@ import { AppConfig } from './app.config';
     BrowserAnimationsModule,
     MDBBootstrapModule.forRoot(),
     ModalModule.forRoot(),
-    FormsModule
-
+    FormsModule,
+    HttpClientModule,
   ],
   providers: [
     AuthGuard,
     BookService,
-    AppConfig
+    AppConfig,
+    AuthenticationService,
   ],
   bootstrap: [AppComponent],
   exports: [

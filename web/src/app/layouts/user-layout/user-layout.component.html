@@ -29,9 +29,14 @@
                     {{user}}
                 </a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item" *ngIf="isGuest">
                 <a class="nav-link waves-effect waver-light" [routerLink]="['/login']">
-                    Salir
+                    Login
+                </a>
+            </li>
+            <li class="nav-item" *ngIf="!isGuest">
+                <a class="nav-link waves-effect waver-light" (click)="logout()">
+                    Logout
                 </a>
             </li>
         </ul>
