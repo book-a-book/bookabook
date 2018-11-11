@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { NewBookModalComponent } from './new-book-modal.component';
+import { FormsModule } from '@angular/forms';
+import { ModalModule } from 'angular-bootstrap-md';
 
 describe('NewBookModalComponent', () => {
   let component: NewBookModalComponent;
@@ -8,9 +10,10 @@ describe('NewBookModalComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ NewBookModalComponent ]
+      declarations: [NewBookModalComponent],
+      imports: [FormsModule, ModalModule.forRoot()]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
