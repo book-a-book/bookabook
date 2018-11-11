@@ -7,12 +7,12 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 })
 export class FeedbackRatingModalComponent implements OnInit {
 
-  @Input() rating: number;
-  @Input() itemId: number;
+  @Input() rating: number = 3;
+  @Input() itemId: number = 3;
   @Output() ratingClick: EventEmitter<any> = new EventEmitter<any>();
 
   inputName: string;
-  comments: string;
+  comments: string = "";
 
   constructor() { }
 

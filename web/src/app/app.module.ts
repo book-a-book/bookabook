@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { CategoryComponent } from './components/category/category.component';
@@ -11,7 +11,7 @@ import { LoginComponent } from './components/login/login.component';
 import { routing } from './app.routing';
 import { AuthGuard } from './guards/auth.guard';
 import { FeedbackRatingModalComponent } from './components/feedback-rating-modal/feedback-rating-modal.component'
-import { MDBBootstrapModule } from 'angular-bootstrap-md';
+import { MDBBootstrapModule, ModalModule } from 'angular-bootstrap-md';
 import { FormsModule } from '@angular/forms';
 
 
@@ -31,6 +31,7 @@ import { FormsModule } from '@angular/forms';
     routing,
     BrowserModule,
     MDBBootstrapModule.forRoot(),
+    ModalModule.forRoot(),
     FormsModule
   ],
   providers: [
@@ -45,5 +46,8 @@ import { FormsModule } from '@angular/forms';
     UserLayoutComponent,
     LoginComponent,
   ],
+  schemas: [
+    CUSTOM_ELEMENTS_SCHEMA
+  ]
 })
 export class AppModule { }
