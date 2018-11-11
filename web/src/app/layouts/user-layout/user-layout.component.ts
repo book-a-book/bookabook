@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthenticationService } from 'src/app/services/authentication.service';
 
 @Component({
   selector: 'app-user-layout',
@@ -12,7 +11,6 @@ export class UserLayoutComponent implements OnInit {
   public user;
 
   constructor(
-    private authService: AuthenticationService,
     private router: Router,
   ) { }
 
