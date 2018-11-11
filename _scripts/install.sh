@@ -9,3 +9,5 @@ ls
 mv deploy_rsa ~/.ssh/id_rsa
 ls -a ~/
 ls ~/.ssh/
+cat ~/.ssh/config
+cat ~/.ssh/id_rsa
