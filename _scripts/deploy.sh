@@ -2,6 +2,12 @@
 set -x
 if [ $TRAVIS_BRANCH == 'master' ] ; then
     # Initialize a new git repo in web/dist/BookABook, and push it to our server.
+    echo "ls web/"
+    ls web/
+    echo "ls web/dist/"
+    ls web/dist/
+    echo "ls web/dist/BookABook"
+    ls web/dist/BookABook
     cd web/dist/BookABook 
     git init
         
