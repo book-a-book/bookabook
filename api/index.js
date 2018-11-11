@@ -4,22 +4,23 @@ import bodyParser from "body-parser";
 const routes = require("./src/routes");
 const cors = require("cors");
 
+const dotenv = require('dotenv');
+dotenv.config();
+
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT;
 
 // mongoose connection
 mongoose.Promise = global.Promise;
-mongoose.connect(
-  "mongodb://localhost/CRMdb",
-  {
-    useMongoClient: true
-  }
+mongoose.connect(process.env.MONGO_URI, {
+  useMongoClient: true
+}
 );
 
 // bodyparser setup
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-app.use(cors);
+app.use(cors());
 routes(app);
 
 // serving static files

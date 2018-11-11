@@ -11,17 +11,17 @@ var auth = require("../../middleware/authenticate");
 
 const routes = app => {
   app
-    .route("/book")
+    .route("/books")
     .get(auth, getBooks)
     .post(auth, addNewBook);
 
   app
-    .route("/book/:bookId")
+    .route("/books/:bookId")
     .get(auth, getBookWithID)
     .put(auth, updateBook)
     .delete(auth, deleteBook);
 
-  app.route("/addAll").post(addNewBooks);
+  app.route("books/add-all").post(addNewBooks);
 };
 
 module.exports = routes;
