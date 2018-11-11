@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { CategoryComponent } from './components/category/category.component';
 import { HomeComponent } from './components/home/home.component';
@@ -26,6 +26,7 @@ import { MDBBootstrapModule } from 'angular-bootstrap-md';
     routing,
     BrowserModule,
     MDBBootstrapModule.forRoot(),
+    FormsModule
   ],
   providers: [
     AuthGuard,
