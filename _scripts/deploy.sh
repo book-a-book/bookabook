@@ -1,6 +1,6 @@
 #!/bin/bash
 set -x
-if [ $TRAVIS_BRANCH == 'master' ] ; then
+if [ $TRAVIS_BRANCH == 'development' ] ; then
     # Initialize a new git repo in web/dist/BookABook, and push it to our server.
     echo "ls web/"
     ls web/
