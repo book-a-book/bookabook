@@ -22,6 +22,7 @@ script:
 - npm config set loglevel warn
 - npm install
 - ng test --watch=false
+- cd ..
 after_success:
 - pwd
 - ls
