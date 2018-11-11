@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { CategoryComponent } from './components/category/category.component';
@@ -11,8 +11,9 @@ import { UserLayoutComponent } from './layouts/user-layout/user-layout.component
 import { LoginComponent } from './components/login/login.component';
 import { routing } from './app.routing';
 import { AuthGuard } from './guards/auth.guard';
-
-import { MDBBootstrapModule } from 'angular-bootstrap-md';
+import { FeedbackRatingModalComponent } from './components/feedback-rating-modal/feedback-rating-modal.component'
+import { MDBBootstrapModule, ModalModule } from 'angular-bootstrap-md';
+import { FormsModule } from '@angular/forms';
 import { BookService } from './services/book.service';
 import { HttpClientModule } from '@angular/common/http';
 import { AppConfig } from './app.config';
@@ -26,6 +27,7 @@ import { AppConfig } from './app.config';
     PublicLayoutComponent,
     UserLayoutComponent,
     LoginComponent,
+    FeedbackRatingModalComponent
   ],
   imports: [
     routing,
@@ -33,7 +35,9 @@ import { AppConfig } from './app.config';
     HttpClientModule,
     BrowserAnimationsModule,
     MDBBootstrapModule.forRoot(),
-    FormsModule,
+    ModalModule.forRoot(),
+    FormsModule
+
   ],
   providers: [
     AuthGuard,
@@ -49,5 +53,8 @@ import { AppConfig } from './app.config';
     UserLayoutComponent,
     LoginComponent,
   ],
+  schemas: [
+    CUSTOM_ELEMENTS_SCHEMA
+  ]
 })
 export class AppModule { }
