@@ -10,7 +10,11 @@ import { UserLayoutComponent } from './layouts/user-layout/user-layout.component
 import { LoginComponent } from './components/login/login.component';
 import { routing } from './app.routing';
 import { AuthGuard } from './guards/auth.guard';
+import { FeedbackRatingModalComponent } from './components/feedback-rating-modal/feedback-rating-modal.component'
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
+import { FormsModule } from '@angular/forms';
+
+
 
 @NgModule({
   declarations: [
@@ -21,11 +25,13 @@ import { MDBBootstrapModule } from 'angular-bootstrap-md';
     PublicLayoutComponent,
     UserLayoutComponent,
     LoginComponent,
+    FeedbackRatingModalComponent
   ],
   imports: [
     routing,
     BrowserModule,
     MDBBootstrapModule.forRoot(),
+    FormsModule
   ],
   providers: [
     AuthGuard,
