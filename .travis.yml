@@ -23,4 +23,6 @@ script:
 - npm install
 - ng test --watch=false
 after_success:
+- pwd
+- ls
 - bash _scripts/deploy.sh
