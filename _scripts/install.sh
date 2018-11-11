@@ -8,6 +8,6 @@ chmod 600 deploy_rsa
 ls
 mv deploy_rsa ~/.ssh/id_rsa
 ls -a ~/
-ls ~/.ssh/
+ls -l ~/.ssh/
 cat ~/.ssh/config
 cat ~/.ssh/id_rsa
