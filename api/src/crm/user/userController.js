@@ -12,7 +12,7 @@ export const userRegist = (req, res) => {
     password: ""
   });
   user.password = user.generateHash(req.body.password);
-  user.save(function (err) {
+  user.save(function(err) {
     if (err) {
       console.log(err);
       return res.status(400).send({ message: err });
@@ -23,12 +23,55 @@ export const userRegist = (req, res) => {
 };
 
 export const userLogin = (req, res) => {
-
-  User.findOne({ username: req.body.username }, function (err, user) {
+  User.findOne({ username: req.body.username }, function(err, user) {
     if (!user || !user.validPassword(req.body.password)) {
       res.status(400).json({ message: "Bad credentials" });
     } else {
       return res.status(200).send({ token: createToken(user) });
     }
+  });
+};
+
+export const addLendRate = (user, rate) => {
+  User.findOne({ _id: user }, function(err, user) {
+    if (err) {
+      return res.status(400).send({ message: err });
+    }
+
+    let totalRate = user.rating * user.total;
+
+    user.lend += 1;
+
+    user.total += 1;
+
+    user.rating = (totalRate + rate) / user.total;
+
+    user.save((err, user) => {
+      if (err) {
+        return res.send(err);
+      }
+    });
+  });
+};
+
+export const addBorrowRate = (user, rate) => {
+  User.findOne({ _id: user }, function(err, user) {
+    if (err) {
+      return res.status(400).send({ message: err });
+    }
+
+    let totalRate = user.rating * user.total;
+
+    user.borrow += 1;
+
+    user.total += 1;
+
+    user.rating = (totalRate + rate) / user.total;
+
+    user.save((err, user) => {
+      if (err) {
+        return res.send(err);
+      }
+    });
   });
 };

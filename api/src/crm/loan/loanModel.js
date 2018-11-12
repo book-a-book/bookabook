@@ -16,14 +16,18 @@ export const LoanSchema = new Schema({
     type: String,
     required: "Enter who wants the book"
   },
-  state: {
+  status: {
     type: Number,
+    required: true
+  },
+  bookObj: {
+    type: Object,
     required: true
   }
 });
 
 /* 
-    States:
+    status:
     0: Pide prestamo
     1: Acepta prestamo
     2: Devuelve libro
