@@ -9,7 +9,9 @@ git:
   depth: 1
 addons:
   chrome: stable
-  ssh_known_hosts: staging.bookabook.tk
+  ssh_known_hosts:
+  - staging.bookabook.tk
+  - api.staging.bookabook.tk
 cache:
   directories:
   - web/node_modules
