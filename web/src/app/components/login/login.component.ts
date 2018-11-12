@@ -33,6 +33,8 @@ export class LoginComponent implements OnInit {
         (response: any) => {
           const decodedToken = this.helper.decodeToken(response.token);
           localStorage.setItem('userId', decodedToken.sub);
+          localStorage.setItem('username', this.username);
+          localStorage.setItem('token', response.token);
           this.router.navigate(['/']);
         },
         err => {

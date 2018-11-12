@@ -22,7 +22,7 @@ module.exports = function (req, res, next) {
   if (!user) {
     return res.status(401).send({ message: "Invlid Request" });
   }
-
+  console.log("authtermina");
   req.user = payload.sub;
   next();
 };

@@ -8,8 +8,6 @@ import { Router } from '@angular/router';
 })
 export class UserLayoutComponent implements OnInit {
 
-  public user;
-
   constructor(
     private router: Router,
   ) { }
@@ -24,5 +22,9 @@ export class UserLayoutComponent implements OnInit {
 
   get isGuest(): boolean {
     return localStorage.getItem('userId') ? false : true;
+  }
+
+  get username(): string {
+    return localStorage.getItem('username');
   }
 }
