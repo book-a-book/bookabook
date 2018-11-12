@@ -23,6 +23,7 @@ export const userRegist = (req, res) => {
 };
 
 export const userLogin = (req, res) => {
+
   User.findOne({ username: req.body.username }, function (err, user) {
     if (!user || !user.validPassword(req.body.password)) {
       res.status(400).json({ message: "Bad credentials" });
