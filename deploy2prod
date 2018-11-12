@@ -1,0 +1,12 @@
+#!/bin/bash
+
+NOW=$(date +"D%y%m%dT%T" | tr -d ":")
+
+
+cd /var/www/bookabook.tk/
+
+tar -czf production.bak/$NOW.tar.gz production
+
+rm production/* -rf
+
+cp staging/* production -rf
