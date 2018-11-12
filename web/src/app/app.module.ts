@@ -17,6 +17,9 @@ import { BookService } from './services/book.service';
 import { HttpClientModule } from '@angular/common/http';
 import { AppConfig } from './app.config';
 import { AuthenticationService } from './services/authentication.service';
+import { PendingComponent } from './components/my-books/pending/pending.component';
+import { LentComponent } from './components/my-books/lent/lent.component';
+import { MineComponent } from './components/my-books/mine/mine.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +30,10 @@ import { AuthenticationService } from './services/authentication.service';
     PublicLayoutComponent,
     UserLayoutComponent,
     LoginComponent,
-    FeedbackRatingModalComponent
+    FeedbackRatingModalComponent,
+    PendingComponent,
+    LentComponent,
+    MineComponent
   ],
   imports: [
     routing,
