@@ -24,6 +24,7 @@ module.exports = function (config) {
     port: 9876,
     colors: true,
     logLevel: config.LOG_INFO,
+    browserDisconnectTimeout: 30000,
     autoWatch: true,
     singleRun: false,
     browsers: ['ChromeHeadless'],
