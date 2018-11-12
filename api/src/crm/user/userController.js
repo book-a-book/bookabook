@@ -12,7 +12,7 @@ export const userRegist = (req, res) => {
     password: ""
   });
   user.password = user.generateHash(req.body.password);
-  user.save(function(err) {
+  user.save(function (err) {
     if (err) {
       console.log(err);
       return res.status(400).send({ message: err });
@@ -23,9 +23,9 @@ export const userRegist = (req, res) => {
 };
 
 export const userLogin = (req, res) => {
-  console.log(req.body);
-  User.findOne({ username: req.body.username }, function(err, user) {
-    if (user && !user.validPassword(req.body.password)) {
+
+  User.findOne({ username: req.body.username }, function (err, user) {
+    if (!user || !user.validPassword(req.body.password)) {
       res.status(400).json({ message: "Bad credentials" });
     } else {
       return res.status(200).send({ token: createToken(user) });

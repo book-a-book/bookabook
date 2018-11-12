@@ -1,6 +1,5 @@
 import jwt from "jwt-simple";
 import moment from "moment";
-import config from "../config/config";
 
 export function createToken(user) {
   var payload = {
@@ -10,5 +9,5 @@ export function createToken(user) {
       .add(14, "days")
       .unix()
   };
-  return jwt.encode(payload, config.TOKEN_SECRET);
+  return jwt.encode(payload, process.env.TOKEN_SECRET);
 }

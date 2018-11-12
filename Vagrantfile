@@ -33,4 +33,5 @@ Vagrant.configure("2") do |config|
     config.vm.hostname = "srv01"
     config.vm.network "private_network", ip: "10.0.0.11"
     config.vm.network "forwarded_port", guest: 4200, host: 4200
+    config.vm.network "forwarded_port", guest: 3000, host: 3000
 end
