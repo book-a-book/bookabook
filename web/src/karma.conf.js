@@ -24,15 +24,33 @@ module.exports = function (config) {
     port: 9876,
     colors: true,
     logLevel: config.LOG_INFO,
-    browserDisconnectTimeout: 30000,
+    captureTimeout: 210000,
+    browserDisconnectTolerance: 3,
+    browserDisconnectTimeout: 210000,
+    browserNoActivityTimeout: 210000,
     autoWatch: true,
     singleRun: false,
     browsers: ['ChromeHeadless'],
     customLaunchers: {
       "Chrome-headless": {
         base: 'Chrome',
-        flags: ['--headless', '--remote-debugging-port=9222', '--no-sandbox', '--disable-gpu']
+        flags: [
+          '--no-sandbox',
+          '--disable-gpu',
+          '--enable-logging',
+          '--no-default-browser-check',
+          '--no-first-run',
+          '--disable-default-apps',
+          '--disable-popup-blocking',
+          '--disable-translate',
+          '--disable-background-timer-throttling',
+          '--disable-renderer-backgrounding',
+          '--disable-device-discovery-notifications',
+          '--remote-debugging-port=9222',
+          '--disable-web-security'
+        ]
       }
+
     },
   });
 };
