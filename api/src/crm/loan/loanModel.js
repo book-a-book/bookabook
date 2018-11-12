@@ -11,6 +11,7 @@ export const LoanSchema = new Schema({
     type: String,
     required: "Enter an owner"
   },
+
   lentTo: {
     type: String,
     required: "Enter who wants the book"
