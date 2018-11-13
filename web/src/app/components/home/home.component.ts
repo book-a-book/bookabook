@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { BookService } from 'src/app/services/book.service';
 import { Book } from 'src/app/models';
 import { AppConfig } from 'src/app/app.config';
@@ -14,6 +14,8 @@ export class HomeComponent implements OnInit {
   public topBooks: Book[];
   public imagesUrl;
 
+  @ViewChild('modal') modal;
+
   constructor(private bookService: BookService, private config: AppConfig) { }
 
   ngOnInit() {
@@ -28,14 +30,13 @@ export class HomeComponent implements OnInit {
         this.topBooks = books.sort((a, b) => a.title < b.title ? -1 : 1);
         this.processBooks(this.topBooks);
       });
+
+    this.modal.type = true;
   }
 
   processBooks(books) {
     books.forEach(book => {
-      if (!book.picture) {
-        console.log(book.title);
-        return;
-      }
+      if (!book.picture) return;
       book.picture = book.picture.replace('public', `${this.config.apiUrl}`);
     });
   }
@@ -44,6 +45,11 @@ export class HomeComponent implements OnInit {
     if (!this.topBooks) return undefined;
     this.topBooks.sort((a, b) => a.title < b.title ? -1 : 1);
     return this.topBooks;
+  }
+
+  openModal(book: Book) {
+    this.modal.book = book;
+    this.modal.open();
   }
 
 }

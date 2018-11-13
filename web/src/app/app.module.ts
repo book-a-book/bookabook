@@ -19,6 +19,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppConfig } from './app.config';
 import { AuthenticationService } from './services/authentication.service';
 import { LoginComponent } from './components/login/login.component';
+import { LoanModalComponent } from './components/loan-modal/loan-modal.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { LoginComponent } from './components/login/login.component';
     EditBookModalComponent,
     NewBookModalComponent,
     FeedbackRatingModalComponent,
+    LoanModalComponent,
   ],
   imports: [
     routing,

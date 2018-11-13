@@ -4,6 +4,8 @@ import { HomeComponent } from './home.component';
 import { BookService } from 'src/app/services/book.service';
 import { HttpClientModule } from '@angular/common/http';
 import { AppConfig } from 'src/app/app.config';
+import { LoanModalComponent } from '../loan-modal/loan-modal.component';
+import { NO_ERRORS_SCHEMA } from '@angular/compiler/src/core';
 
 describe('HomeComponent', () => {
   let component: HomeComponent;
@@ -11,9 +13,10 @@ describe('HomeComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [HomeComponent],
+      declarations: [HomeComponent, LoanModalComponent],
       imports: [HttpClientModule],
-      providers: [BookService, AppConfig]
+      providers: [BookService, AppConfig],
+      schemas: [NO_ERRORS_SCHEMA]
     })
       .compileComponents();
   }));

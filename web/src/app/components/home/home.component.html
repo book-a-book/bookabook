@@ -1,5 +1,7 @@
 <div class="container">
 
+    <loan-modal #modal></loan-modal>
+
     <div class="row">
 
         <div class="col-md-12">
@@ -38,7 +40,7 @@
 
         <div class="col-md-12 mt-3 slider-container">
 
-            <div *ngFor="let book of topBooks | slice:0:6">
+            <div *ngFor="let book of topBooks | slice:0:6" (click)="openModal(book)">
                 <img src="{{book.picture}}">
             </div>
 
