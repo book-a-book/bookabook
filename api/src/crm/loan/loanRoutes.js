@@ -1,6 +1,8 @@
 import {
   loanRequest,
   loanAccept,
+  loansPending,
+  loansActive,
   returnBook,
   returnAcceptBook
 } from "./loanController";
@@ -11,6 +13,9 @@ const routes = app => {
   app.route("/borrow/:bookId").post(auth, loanRequest);
 
   app.route("/borrow-accept/:loanId").post(auth, loanAccept);
+
+  app.route("/loans/pending").get(auth, loansPending);
+  app.route("/loans/active").get(auth, loansActive);
 
   app.route("/return/:loanId").post(auth, returnBook);
 

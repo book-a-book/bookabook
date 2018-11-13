@@ -4,7 +4,8 @@ import {
   getBooks,
   getBookWithID,
   updateBook,
-  deleteBook
+  deleteBook,
+  getMyBooks
 } from "./bookController";
 
 var auth = require("../../middleware/authenticate");
@@ -14,6 +15,9 @@ const routes = app => {
     .route("/books")
     .get(auth, getBooks)
     .post(auth, addNewBook);
+
+  app.route("/books/mine")
+    .get(auth, getMyBooks);
 
   app
     .route("/books/:bookId")

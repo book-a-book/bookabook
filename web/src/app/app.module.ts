@@ -18,6 +18,9 @@ import { BookService } from './services/book.service';
 import { HttpClientModule } from '@angular/common/http';
 import { AppConfig } from './app.config';
 import { AuthenticationService } from './services/authentication.service';
+import { PendingComponent } from './components/my-books/pending/pending.component';
+import { LentComponent } from './components/my-books/lent/lent.component';
+import { MineComponent } from './components/my-books/mine/mine.component';
 import { LoginComponent } from './components/login/login.component';
 import { LoanModalComponent } from './components/loan-modal/loan-modal.component';
 
@@ -32,6 +35,9 @@ import { LoanModalComponent } from './components/loan-modal/loan-modal.component
     UserLayoutComponent,
     LoginComponent,
     FeedbackRatingModalComponent,
+    PendingComponent,
+    LentComponent,
+    MineComponent,
     EditBookModalComponent,
     NewBookModalComponent,
     FeedbackRatingModalComponent,

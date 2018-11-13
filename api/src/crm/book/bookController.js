@@ -73,3 +73,12 @@ export const deleteBook = (req, res) => {
     res.json({ message: "Successfully deleted book" });
   });
 };
+
+export const getMyBooks = (req, res) => {
+  Book.find({ owner: req.user }, (err, books) => {
+    if (err) {
+      res.send(err);
+    }
+    res.send(books);
+  });
+};

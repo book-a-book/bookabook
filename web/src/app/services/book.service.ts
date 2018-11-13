@@ -23,18 +23,7 @@ export class BookService {
     }
 
     getMyBooks(): Observable<Book[]> {
-        return Observable.from([
-            [{
-                title: 'Acá va un libro que es mío',
-                about: 'Una historia del éxito',
-                author: 'CAP',
-                isActive: true,
-                picture: 'hola',
-                tags: [],
-                created_date: new Date(),
-                owner: '123',
-                lendTo: '123',
-            }]]);
+        return this.http.get<Book[]>(this.config.apiUrl + '/books/mine', this.jwt());
     }
 
     jwt() {
