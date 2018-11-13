@@ -22,7 +22,7 @@ before_script:
 script:
 - cd api
 - npm install
-- npm serve &
+- npm start &
 - sleep 2
 - cd ../web
 - npm config set loglevel warn
