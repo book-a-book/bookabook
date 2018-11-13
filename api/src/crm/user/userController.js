@@ -1,8 +1,30 @@
 import mongoose from "mongoose";
+import _ from "lodash";
 import { UserSchema } from "./userModel";
 import { createToken } from "../../services/tokenHandler";
 
 const User = mongoose.model("User", UserSchema);
+
+export const getUsers = (req, res) => {
+  User.find({}, (err, user) => {
+    if (err) {
+      res.send(err);
+    }
+    for (let i in user) {
+      i = _.omit(i, ["password"]);
+    }
+    res.json(user);
+  });
+};
+
+export const getUserWithID = (req, res) => {
+  User.findById(req.params.id, (err, user) => {
+    if (err) {
+      res.send(err);
+    }
+    res.json(_.omit(user, ["password"]));
+  });
+};
 
 export const userRegist = (req, res) => {
   var user = new User({
