@@ -18,9 +18,9 @@ export class LoanModalComponent {
 
   submit() {
     if (this.type) {
-      console.log("accept");
+      console.log("aceptar");
     } else {
-      console.log("")
+      console.log("pedir")
     }
   }
 

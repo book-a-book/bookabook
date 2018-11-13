@@ -18,6 +18,10 @@ export class BookService {
             .map((response: Response) => response.json());
     }
 
+    getById(id: string) {
+        return this.http.get<Book>(this.config.apiUrl + '/books/' + id, this.jwt());
+    }
+
     getAll() {
         return this.http.get<Book[]>(this.config.apiUrl + '/books', this.jwt());
     }
