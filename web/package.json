@@ -23,6 +23,7 @@
     "@auth0/angular-jwt": "^2.0.0",
     "@types/chart.js": "^2.7.38",
     "angular-bootstrap-md": "^6.3.0",
+    "angular-jwt": "^0.1.10",
     "chart.js": "^2.5.0",
     "core-js": "^2.5.4",
     "font-awesome": "^4.7.0",
