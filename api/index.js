@@ -9,6 +9,7 @@ dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT;
+process.title = "api-bookabook";
 
 // mongoose connection
 mongoose.Promise = global.Promise;
