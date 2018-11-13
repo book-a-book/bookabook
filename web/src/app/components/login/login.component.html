@@ -1,11 +1,13 @@
-<div class="offset-md-4 col-md-4">
-    <form class="text-center border border-light p-5" (ngSubmit)="login()" ngNativeValidate>
+<div class="offset-md-4 col-md-4 mt-5">
+    <form class="text-center p-5 card" (ngSubmit)="login()" ngNativeValidate>
 
         <p class="h4 mb-4">Bienvenidos a Book a Book!</p>
 
-        <input type="text" [(ngModel)]="username" name="username" class="form-control mb-4" placeholder="Usuario" required>
+        <input type="text" [(ngModel)]="username" name="username" class="form-control mb-4" placeholder="Usuario"
+            required>
 
-        <input type="password" [(ngModel)]="password" name="password" class="form-control mb-4" placeholder="Contraseña" required>
+        <input type="password" [(ngModel)]="password" name="password" class="form-control mb-4" placeholder="Contraseña"
+            required>
 
         <div *ngIf="loginError">
             <p class="red-text bold">
@@ -14,7 +16,8 @@
         </div>
         <button mdbBtn color="info" block="true" class="my-4" type="submit">Inciar sesión</button>
 
-        <p>No eres usuario?
+        <p>
+            No eres usuario?
             <a href="">Registrate</a>
         </p>
     </form>
