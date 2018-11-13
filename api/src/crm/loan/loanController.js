@@ -2,10 +2,15 @@ import mongoose from "mongoose";
 
 import { LoanSchema } from "./loanModel";
 import { BookSchema } from "../book/bookModel";
+import { UserSchema } from "../user/userModel";
+
+import { addLendRate, addBorrowRate } from "../user/userController";
 
 const Loan = mongoose.model("Loan", LoanSchema);
 
 const Book = mongoose.model("Book", BookSchema);
+
+const User = mongoose.model("User", UserSchema);
 
 export const loanRequest = (req, res, next) => {
   Book.findOne({ _id: req.params.bookId }, function(err, book) {
@@ -13,17 +18,16 @@ export const loanRequest = (req, res, next) => {
       return res.status(400).send({ message: err });
     }
 
-    if (book.lentTo) {
-      return res
-        .status(400)
-        .send({ message: "El libro no esta disponible pa prestar" });
+    if (book.lendTo) {
+      return res.status(400).send({ message: "El libro ya esta prestado" });
     }
 
     let loan = new Loan({
       owner: book.owner,
       lentTo: req.user,
       book: req.params.bookId,
-      state: 0
+      status: 0,
+      bookObj: book
     });
 
     loan.save((err, loan) => {
@@ -36,21 +40,87 @@ export const loanRequest = (req, res, next) => {
 };
 
 export const loanAccept = (req, res, next) => {
-  Loan.findOneAndUpdate(
-    { _id: req.params.loanId },
-    { $set: { state: 1 } },
-    { new: true },
-    (err, loan) => {
-      if (err) {
-        res.send(err);
-      }
-      res.json(loan);
+  Loan.findOne({ _id: req.params.loanId }, function(err, loan) {
+    if (err) {
+      return res.status(400).send({ message: err });
     }
-  );
+    if (req.user !== loan.owner) {
+      return res.status(400).send({ message: "Bad request" });
+    }
+    Book.findOne({ _id: loan.book }, function(err, book) {
+      if (err) {
+        return res.status(400).send({ message: err });
+      }
+      if (book && book.lendTo) {
+        return res.status(400).send({ message: "Libro ya prestado" });
+      }
+
+      book.lendTo = loan.lentTo;
+
+      book.save((err, book) => {
+        if (err) {
+          return res.send(err);
+        }
+      });
+    });
+
+    loan.status = 1;
+    loan.save((err, loan) => {
+      if (err) {
+        return res.send(err);
+      }
+    });
+    res.json(loan);
+  });
 };
 
-/*
-export const loanFinish = (req, res, next) => {};
+export const returnBook = (req, res, next) => {
+  Loan.findOne({ _id: req.params.loanId }, function(err, loan) {
+    if (err) {
+      return res.status(400).send({ message: err });
+    }
+    if (req.user !== loan.lentTo) {
+      return res.status(400).send({ message: "Bad request" });
+    }
+    loan.status = 2;
+    loan.save((err, loan) => {
+      if (err) {
+        return res.send(err);
+      }
+    });
+    addLendRate(loan.owner, req.body.rate);
+    res.json(loan);
+  });
+};
+export const returnAcceptBook = (req, res, next) => {
+  Loan.findOne({ _id: req.params.loanId }, function(err, loan) {
+    if (err) {
+      return res.status(400).send({ message: err });
+    }
+    if (req.user !== loan.owner) {
+      return res.status(400).send({ message: "Bad request" });
+    }
+    loan.status = 3;
+    loan.save((err, loan) => {
+      if (err) {
+        return res.send(err);
+      }
+    });
 
-export const loanFinishRequest = (req, res, next) => {};
- */
+    Book.findOne({ _id: loan.book }, function(err, book) {
+      if (err) {
+        return res.status(400).send({ message: err });
+      }
+      book.lendTo = null;
+
+      book.save((err, book) => {
+        if (err) {
+          return res.send(err);
+        }
+      });
+    });
+    addBorrowRate(loan.lentTo, req.body.rate);
+
+    res.json(loan);
+  });
+};
