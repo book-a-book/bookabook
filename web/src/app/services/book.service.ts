@@ -4,6 +4,7 @@ import { AppConfig } from '../app.config';
 import { Book } from '../models';
 import 'rxjs/Rx';
 import { jwtHeaders } from './jwtHeaders';
+import { Observable } from 'rxjs/Rx';
 
 @Injectable()
 export class BookService {
@@ -22,4 +23,21 @@ export class BookService {
         return this.http.get<Book[]>(this.config.apiUrl + '/books', jwtHeaders);
     }
 
+    getMyBooks(): Observable<Book[]> {
+        return new Observable<Book[]>(observer => {
+            observer.next([
+                {
+                    title: 'Acá va un libro que es mío',
+                    about: 'Una historia del éxito',
+                    author: 'CAP',
+                    isActive: true,
+                    picture: 'hola',
+                    tags: [],
+                    created_date: new Date(),
+                    owner: '123',
+                    lendTo: '123',
+                }
+            ]);
+        });
+    }
 }
