@@ -20,7 +20,11 @@ before_install:
 before_script:
 - npm install -g @angular/cli
 script:
-- cd web
+- cd api
+- npm install
+- npm serve &
+- sleep 2
+- cd ../web
 - npm config set loglevel warn
 - npm cache clear --force
 - npm install
