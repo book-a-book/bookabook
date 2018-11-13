@@ -5,6 +5,7 @@ import {
   getBookWithID,
   updateBook,
   deleteBook,
+  getAviableBooks,
   getMyBooks
 } from "./bookController";
 
@@ -15,6 +16,9 @@ const routes = app => {
     .route("/books")
     .get(auth, getBooks)
     .post(auth, addNewBook);
+
+
+  app.route("/books/avaiable").get(auth, getAviableBooks);
 
   app.route("/books/mine")
     .get(auth, getMyBooks);
