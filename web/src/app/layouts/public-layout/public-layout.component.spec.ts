@@ -18,7 +18,6 @@ describe('PublicLayoutComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(PublicLayoutComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
   });
 
   it('should create', () => {
