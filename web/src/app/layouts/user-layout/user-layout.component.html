@@ -24,14 +24,19 @@
         </ul>
 
         <ul class="navbar-nav">
-            <li class="nav-item" [routerLinkActive]="['active']">
-                <a class="nav-link waves-effect waver-light">
-                    {{user}}
+            <li class="nav-item" *ngIf="isGuest">
+                <a class="nav-link waves-effect waver-light" [routerLink]="['/login']">
+                    Login
                 </a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link waves-effect waver-light" [routerLink]="['/login']">
-                    Salir
+            <li class="nav-item" *ngIf="!isGuest">
+                <a class="nav-link waves-effect waver-light">
+                    Hola {{username}}!
+                </a>
+            </li>
+            <li class="nav-item" *ngIf="!isGuest">
+                <a class="nav-link waves-effect waver-light" (click)="logout()">
+                    Logout
                 </a>
             </li>
         </ul>
@@ -41,5 +46,5 @@
 </mdb-navbar>
 
 <router-outlet>
-    <div style="height: 45px"></div>
+    <div style="height: 100px"></div>
 </router-outlet>

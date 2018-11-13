@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-layout',
@@ -7,9 +8,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserLayoutComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private router: Router,
+  ) { }
 
   ngOnInit() {
   }
 
+  logout() {
+    localStorage.clear();
+    this.router.navigate(['/']);
+  }
+
+  get isGuest(): boolean {
+    return localStorage.getItem('userId') ? false : true;
+  }
+
+  get username(): string {
+    return localStorage.getItem('username');
+  }
 }
