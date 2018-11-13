@@ -19,6 +19,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppConfig } from './app.config';
 import { AuthenticationService } from './services/authentication.service';
 import { LoginComponent } from './components/login/login.component';
+import { BookDescriptionModalComponent } from './components/book-description-modal/book-description-modal.component';
+import { BookRequestModalComponent } from './components/book-request-modal/book-request-modal.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +36,8 @@ import { LoginComponent } from './components/login/login.component';
     EditBookModalComponent,
     NewBookModalComponent,
     FeedbackRatingModalComponent,
+    BookDescriptionModalComponent,
+    BookRequestModalComponent,
   ],
   imports: [
     routing,
