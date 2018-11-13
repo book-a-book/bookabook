@@ -8,7 +8,7 @@ const Loan = mongoose.model("Loan", LoanSchema);
 const Book = mongoose.model("Book", BookSchema);
 
 export const loanRequest = (req, res, next) => {
-  Book.findOne({ _id: req.params.bookId }, function(err, book) {
+  Book.findOne({ _id: req.params.bookId }, function (err, book) {
     if (err) {
       return res.status(400).send({ message: err });
     }
@@ -49,6 +49,27 @@ export const loanAccept = (req, res, next) => {
   );
 };
 
+export const loansPending = (req, res, next) => {
+  Loan.find({
+    $or: [{ 'owner': req.user, status: 0 }, { 'lentTo': req.user, status: 0 }],
+  }, (err, loans) => {
+    if (err) {
+      res.send(err);
+    }
+    res.send(loans);
+  });
+};
+
+export const loansActive = (req, res, next) => {
+  Loan.find({
+    $or: [{ 'owner': req.user, status: 1 }, { 'lentTo': req.user, status: 1 }],
+  }, (err, loans) => {
+    if (err) {
+      res.send(err);
+    }
+    res.send(loans);
+  });
+};
 /*
 export const loanFinish = (req, res, next) => {};
 
