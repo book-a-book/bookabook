@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
@@ -22,6 +22,7 @@ import { PendingComponent } from './components/my-books/pending/pending.componen
 import { LentComponent } from './components/my-books/lent/lent.component';
 import { MineComponent } from './components/my-books/mine/mine.component';
 import { LoginComponent } from './components/login/login.component';
+import { LoanModalComponent } from './components/loan-modal/loan-modal.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { LoginComponent } from './components/login/login.component';
     EditBookModalComponent,
     NewBookModalComponent,
     FeedbackRatingModalComponent,
+    LoanModalComponent,
   ],
   imports: [
     routing,
@@ -60,7 +62,8 @@ import { LoginComponent } from './components/login/login.component';
   bootstrap: [AppComponent],
 
   schemas: [
-    CUSTOM_ELEMENTS_SCHEMA
+    CUSTOM_ELEMENTS_SCHEMA,
+    NO_ERRORS_SCHEMA
   ]
 })
 export class AppModule { }
