@@ -7,6 +7,7 @@ import { PublicLayoutComponent } from './layouts/public-layout/public-layout.com
 import { LoginComponent } from './components/login/login.component';
 import { AuthGuard } from './guards/auth.guard';
 import { MyBooksComponent } from './components/my-books/my-books.component';
+import { RouterTestingModule } from '@angular/router/testing';
 
 const PUBLIC_ROUTES: Routes = [
     { path: 'login', component: LoginComponent }
@@ -26,3 +27,4 @@ const ROUTES: Routes = [
 ];
 
 export const routing = RouterModule.forRoot(ROUTES);
+export const routingTest = RouterTestingModule.withRoutes(ROUTES);

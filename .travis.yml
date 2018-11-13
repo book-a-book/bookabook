@@ -1,25 +1,31 @@
 language: node_js
 node_js:
-  - stable 
-
+- stable
 env:
   global:
-    - CHROME_BIN=/usr/bin/google-chrome
-    - DISPLAY=:99.0
+  - CHROME_BIN=/usr/bin/google-chrome
+  - DISPLAY=:99.0
 git:
   depth: 1
 addons:
   chrome: stable
+  ssh_known_hosts:
+  - staging.bookabook.tk
+  - api.staging.bookabook.tk
 cache:
   directories:
-    - web/node_modules
-
+  - web/node_modules
+before_install:
+- bash _scripts/install.sh
 before_script:
-  - npm install -g @angular/cli
-
+- npm install -g @angular/cli
 script:
-  - cd web
-  - npm config set loglevel warn
-  - npm cache clear --force
-  - npm install
-  - ng test --watch=false
+- cd web
+- npm config set loglevel warn
+- npm cache clear --force
+- npm install
+- ng test --watch=false
+after_success:
+- ng build
+- cd ..
+- bash _scripts/deploy.sh
