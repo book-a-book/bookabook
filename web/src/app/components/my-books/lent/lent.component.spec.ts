@@ -1,6 +1,9 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { LentComponent } from './lent.component';
+import { HttpClientModule } from '@angular/common/http';
+import { AppConfig } from 'src/app/app.config';
+import { BookService } from 'src/app/services/book.service';
 
 describe('LentComponent', () => {
   let component: LentComponent;
@@ -8,9 +11,11 @@ describe('LentComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ LentComponent ]
+      declarations: [LentComponent],
+      imports: [HttpClientModule],
+      providers: [AppConfig, BookService],
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
