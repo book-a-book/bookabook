@@ -20,5 +20,6 @@ before_script:
 script:
   - cd web
   - npm config set loglevel warn
+  - npm cache clear --force
   - npm install
   - ng test --watch=false
