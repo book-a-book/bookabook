@@ -18,6 +18,7 @@ import { BookService } from './services/book.service';
 import { HttpClientModule } from '@angular/common/http';
 import { AppConfig } from './app.config';
 import { AuthenticationService } from './services/authentication.service';
+import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { AuthenticationService } from './services/authentication.service';
     CategoryComponent,
     HomeComponent,
     MyBooksComponent,
+    LoginComponent,
     PublicLayoutComponent,
     UserLayoutComponent,
     EditBookModalComponent,
