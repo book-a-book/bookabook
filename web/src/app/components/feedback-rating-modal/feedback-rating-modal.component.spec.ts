@@ -20,6 +20,7 @@ describe('FeedbackRatingModalComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(FeedbackRatingModalComponent);
     component = fixture.componentInstance;
+    fixture.detectChanges();
   });
 
   it('should create', () => {
