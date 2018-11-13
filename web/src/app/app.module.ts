@@ -8,7 +8,6 @@ import { HomeComponent } from './components/home/home.component';
 import { MyBooksComponent } from './components/my-books/my-books.component';
 import { PublicLayoutComponent } from './layouts/public-layout/public-layout.component';
 import { UserLayoutComponent } from './layouts/user-layout/user-layout.component';
-import { LoginComponent } from './components/login/login.component';
 import { routing } from './app.routing';
 import { AuthGuard } from './guards/auth.guard';
 import { EditBookModalComponent } from './components/edit-book-modal/edit-book-modal.component';
@@ -28,7 +27,6 @@ import { AuthenticationService } from './services/authentication.service';
     MyBooksComponent,
     PublicLayoutComponent,
     UserLayoutComponent,
-    LoginComponent,
     EditBookModalComponent,
     NewBookModalComponent,
     FeedbackRatingModalComponent
@@ -56,7 +54,6 @@ import { AuthenticationService } from './services/authentication.service';
     MyBooksComponent,
     PublicLayoutComponent,
     UserLayoutComponent,
-    LoginComponent,
   ],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA
