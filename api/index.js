@@ -6,6 +6,7 @@ import routes from './src/routes/bookRoutes';
 
 const app = express();
 const PORT = 3000;
+process.title = "api-bookabook";
 
 // mongoose connection
 mongoose.Promise = global.Promise;
