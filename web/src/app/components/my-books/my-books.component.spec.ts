@@ -1,6 +1,12 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { MyBooksComponent } from './my-books.component';
+import { LentComponent } from './lent/lent.component';
+import { PendingComponent } from './pending/pending.component';
+import { MineComponent } from './mine/mine.component';
+import { HttpClientModule } from '@angular/common/http';
+import { AppConfig } from 'src/app/app.config';
+import { BookService } from 'src/app/services/book.service';
 
 describe('MyBooksComponent', () => {
   let component: MyBooksComponent;
@@ -8,9 +14,21 @@ describe('MyBooksComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ MyBooksComponent ]
+      declarations: [
+        MyBooksComponent,
+        LentComponent,
+        PendingComponent,
+        MineComponent,
+      ],
+      imports: [
+        HttpClientModule
+      ],
+      providers: [
+        AppConfig,
+        BookService,
+      ],
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
