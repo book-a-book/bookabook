@@ -29,5 +29,6 @@ export class BookService {
     jwt() {
         const token = localStorage.getItem('token');
         return { headers: { 'Authorization': `Bearer ${token}` } };
-    };
+    }
+
 };

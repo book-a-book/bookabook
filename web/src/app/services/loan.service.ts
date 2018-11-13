@@ -3,7 +3,6 @@ import { AppConfig } from '../app.config';
 import { Loan } from '../models/Loan';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { jwtHeaders } from './jwtHeaders';
 
 @Injectable({
   providedIn: 'root'
@@ -16,10 +15,16 @@ export class LoanService {
   ) { }
 
   getPending(): Observable<Loan[]> {
-    return this.http.get<Loan[]>(this.config.apiUrl + '/loans/pending', jwtHeaders);
+    return this.http.get<Loan[]>(this.config.apiUrl + '/loans/pending', this.jwt());
   }
 
   getLent(): Observable<Loan[]> {
-    return this.http.get<Loan[]>(this.config.apiUrl + '/loans/active', jwtHeaders);
+    return this.http.get<Loan[]>(this.config.apiUrl + '/loans/active', this.jwt());
   }
+
+  jwt() {
+    const token = localStorage.getItem('token');
+    return { headers: { 'Authorization': `Bearer ${token}` } };
+  }
+
 }
