@@ -32,6 +32,10 @@ export class HomeComponent implements OnInit {
 
   processBooks(books) {
     books.forEach(book => {
+      if (!book.picture) {
+        console.log(book.title);
+        return;
+      }
       book.picture = book.picture.replace('public', `${this.config.apiUrl}`);
     });
   }

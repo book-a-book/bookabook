@@ -3,11 +3,9 @@
 
         <p class="h4 mb-4">Bienvenidos a Book a Book!</p>
 
-        <input type="text" [(ngModel)]="username" name="username" class="form-control mb-4" placeholder="Usuario"
-            required>
+        <input type="text" [(ngModel)]="username" name="username" class="form-control mb-4" placeholder="Usuario" required>
 
-        <input type="password" [(ngModel)]="password" name="password" class="form-control mb-4" placeholder="Contraseña"
-            required>
+        <input type="password" [(ngModel)]="password" name="password" class="form-control mb-4" placeholder="Contraseña" required>
 
         <div *ngIf="loginError">
             <p class="red-text bold">
