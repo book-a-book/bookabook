@@ -27,4 +27,20 @@ export class LoanService {
     return { headers: { 'Authorization': `Bearer ${token}` } };
   }
 
+  borrow(bookId: String) {
+    return this.http.post<Loan>(this.config.apiUrl + '/borrow/' + bookId, {}, this.jwt());
+  }
+
+  borrowAccept(loanId: String) {
+    return this.http.post<Loan>(this.config.apiUrl + '/borrow-accept/' + loanId, {}, this.jwt());
+  }
+
+  return(loanId: String) {
+    return this.http.post<Loan>(this.config.apiUrl + '/return/' + loanId, {}, this.jwt());
+  }
+
+  returnAccept(loanId: String) {
+    return this.http.post<Loan>(this.config.apiUrl + '/return-accept/' + loanId, {}, this.jwt());
+  }
+
 }

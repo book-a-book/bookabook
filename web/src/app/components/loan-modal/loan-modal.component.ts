@@ -1,5 +1,8 @@
-import { Component, Input, ViewChild } from '@angular/core';
-import { Book } from 'src/app/models';
+import { Component, ViewChild } from '@angular/core';
+import { Book, Loan } from 'src/app/models';
+import { Status } from 'src/app/models/Status';
+import { LoanService } from 'src/app/services/loan.service';
+import { ModalDirective } from 'angular-bootstrap-md';
 
 @Component({
   selector: 'loan-modal',
@@ -8,24 +11,53 @@ import { Book } from 'src/app/models';
 })
 export class LoanModalComponent {
 
-  @Input() type: Boolean;
+  loan: Loan;
+  book: Book;
+  statuses = Status;
 
-  @Input() book: Book;
+  @ViewChild('basicModal') modal: ModalDirective;
 
-  @ViewChild('basicModal') modal;
-
-  constructor() { }
-
-  submit() {
-    if (this.type) {
-      console.log("aceptar");
-    } else {
-      console.log("pedir")
-    }
-  }
+  constructor(
+    private loanService: LoanService,
+  ) { }
 
   open() {
     this.modal.show();
   }
 
+  close() {
+    this.modal.hide();
+  }
+
+  get status(): Status {
+    return Status.AVAILABLE;
+  }
+
+  request() {
+    this.loanService.borrow(this.book._id)
+      .subscribe((loan: Loan) => {
+        this.close();
+      });
+  }
+
+  requestAccept() {
+    this.loanService.borrowAccept(this.loan._id)
+      .subscribe((loan: Loan) => {
+        this.close();
+      });
+  }
+
+  return() {
+    this.loanService.return(this.loan._id)
+      .subscribe((loan: Loan) => {
+        this.close();
+      });
+  }
+
+  returnAccept() {
+    this.loanService.returnAccept(this.loan._id)
+      .subscribe((loan: Loan) => {
+        this.close();
+      });
+  }
 }

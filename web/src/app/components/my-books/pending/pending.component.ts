@@ -20,24 +20,27 @@ export class PendingComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.modal.type = true;
+    this.refresh();
+  }
+
+  processBooks() {
+    this.loans.forEach(loan => {
+      if (!loan.bookObj.picture) return;
+      loan.bookObj.picture = loan.bookObj.picture.replace('public', this.config.apiUrl);
+    });
+  }
+
+  openModal(loan: Loan) {
+    this.modal.loan = loan;
+    this.modal.book = loan.bookObj;
+    this.modal.open();
+  }
+
+  refresh() {
     this.loanService.getPending()
       .subscribe((loans: Loan[]) => {
         this.loans = loans;
         this.processBooks();
       });
   }
-
-  processBooks() {
-    this.loans.forEach(loan => {
-      if (!loan.bookObj.picture) return;
-      loan.bookObj.picture = loan.bookObj.picture.replace('public', `${this.config.apiUrl}`);
-    });
-  }
-
-  openModal(loan: Loan) {
-    this.modal.book = loan.bookObj;
-    this.modal.open();
-  }
-
 }
