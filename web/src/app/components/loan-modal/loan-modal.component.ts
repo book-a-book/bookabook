@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, Output, EventEmitter } from '@angular/core';
 import { Book, Loan } from 'src/app/models';
 import { Status } from 'src/app/models/Status';
 import { LoanService } from 'src/app/services/loan.service';
@@ -14,6 +14,7 @@ export class LoanModalComponent {
   loan: Loan;
   book: Book;
   statuses = Status;
+  @Output() refresh = new EventEmitter<boolean>();
 
   @ViewChild('basicModal') modal: ModalDirective;
 
@@ -27,9 +28,22 @@ export class LoanModalComponent {
 
   close() {
     this.modal.hide();
+    this.refresh.emit(true);
   }
 
   get status(): Status {
+    if (this.loan) {
+      switch (this.loan.status) {
+        case 0:
+          return Status.REQUESTED;
+        case 1:
+          return Status.LENT;
+        case 2:
+          return Status.RETURNED;
+        case 3:
+          return Status.RETURNED_ACCEPTED;
+      }
+    }
     return Status.AVAILABLE;
   }
 

@@ -20,7 +20,7 @@ export class PendingComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.refresh();
+    this.refreshBooks();
   }
 
   processBooks() {
@@ -36,7 +36,7 @@ export class PendingComponent implements OnInit {
     this.modal.open();
   }
 
-  refresh() {
+  refreshBooks() {
     this.loanService.getPending()
       .subscribe((loans: Loan[]) => {
         this.loans = loans;

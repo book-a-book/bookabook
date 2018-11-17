@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { Loan } from 'src/app/models';
 import { LoanService } from 'src/app/services/loan.service';
 import { LoanModalComponent } from '../../loan-modal/loan-modal.component';
+import { AppConfig } from 'src/app/app.config';
 
 @Component({
   selector: 'app-lent',
@@ -16,16 +17,18 @@ export class LentComponent implements OnInit {
 
   constructor(
     private loanService: LoanService,
+    private config: AppConfig,
   ) { }
 
   ngOnInit() {
-    this.refresh();
+    this.refreshBooks();
   }
 
-  refresh() {
+  refreshBooks() {
     this.loanService.getLent()
       .subscribe((loans: Loan[]) => {
         this.loans = loans;
+        this.processBooks();
       });
   }
 
@@ -33,5 +36,12 @@ export class LentComponent implements OnInit {
     this.modal.loan = loan;
     this.modal.book = loan.bookObj;
     this.modal.open();
+  }
+
+  processBooks() {
+    this.loans.forEach(loan => {
+      if (!loan.bookObj.picture) return;
+      loan.bookObj.picture = loan.bookObj.picture.replace('public', this.config.apiUrl);
+    });
   }
 }

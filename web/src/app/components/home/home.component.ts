@@ -19,19 +19,7 @@ export class HomeComponent implements OnInit {
   constructor(private bookService: BookService, private config: AppConfig) { }
 
   ngOnInit() {
-    this.bookService.getAll()
-      .subscribe(books => {
-        this.books = books;
-        this.processBooks(this.books);
-      });
-
-    this.bookService.getAll()
-      .subscribe(books => {
-        this.topBooks = books.sort((a, b) => a.title < b.title ? -1 : 1);
-        this.processBooks(this.topBooks);
-      });
-
-    this.modal.type = true;
+    this.refreshBooks();
   }
 
   processBooks(books) {
@@ -50,6 +38,20 @@ export class HomeComponent implements OnInit {
   openModal(book: Book) {
     this.modal.book = book;
     this.modal.open();
+  }
+
+  refreshBooks() {
+    this.bookService.getAll()
+      .subscribe(books => {
+        this.books = books;
+        this.processBooks(this.books);
+      });
+
+    this.bookService.getAll()
+      .subscribe(books => {
+        this.topBooks = books.sort((a, b) => a.title < b.title ? -1 : 1);
+        this.processBooks(this.topBooks);
+      });
   }
 
 }
