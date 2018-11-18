@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  baseUrl: 'http://api.staging.bookabook.tk'
+  baseUrl: 'https://api.staging.bookabook.tk'
 };
