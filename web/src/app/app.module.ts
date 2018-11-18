@@ -3,7 +3,6 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from '@angular/cor
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
-import { CategoryComponent } from './components/category/category.component';
 import { HomeComponent } from './components/home/home.component';
 import { MyBooksComponent } from './components/my-books/my-books.component';
 import { PublicLayoutComponent } from './layouts/public-layout/public-layout.component';
@@ -28,7 +27,6 @@ import { RegisterFormComponent } from './components/register-form/register-form.
 @NgModule({
   declarations: [
     AppComponent,
-    CategoryComponent,
     HomeComponent,
     MyBooksComponent,
     LoginComponent,

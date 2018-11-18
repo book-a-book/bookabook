@@ -1,6 +1,13 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { RegisterFormComponent } from './register-form.component';
+import { FormsModule } from '@angular/forms';
+import { ModalModule } from 'angular-bootstrap-md';
+import { AuthenticationService } from "../../services/authentication.service";
+import { HttpClientModule } from '@angular/common/http';
+import { RouterTestingModule } from '@angular/router/testing';
+
+
 
 describe('RegisterFormComponent', () => {
   let component: RegisterFormComponent;
@@ -8,9 +15,13 @@ describe('RegisterFormComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ RegisterFormComponent ]
+      declarations: [RegisterFormComponent],
+      imports: [FormsModule, ModalModule.forRoot(), HttpClientModule, RouterTestingModule],
+      providers: [AuthenticationService]
+
+
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
