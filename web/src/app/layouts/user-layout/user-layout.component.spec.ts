@@ -9,7 +9,7 @@ describe('UserLayoutComponent', () => {
   let component: UserLayoutComponent;
   let fixture: ComponentFixture<UserLayoutComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [UserLayoutComponent],
       imports: [RouterTestingModule],
@@ -17,7 +17,7 @@ describe('UserLayoutComponent', () => {
       schemas: [NO_ERRORS_SCHEMA],
     })
       .compileComponents();
-  }));
+  });
 
   beforeEach(() => {
     fixture = TestBed.createComponent(UserLayoutComponent);

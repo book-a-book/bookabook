@@ -9,14 +9,14 @@ describe('LentComponent', () => {
   let component: LentComponent;
   let fixture: ComponentFixture<LentComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [LentComponent],
       imports: [HttpClientModule],
       providers: [AppConfig, BookService],
     })
       .compileComponents();
-  }));
+  });
 
   beforeEach(() => {
     fixture = TestBed.createComponent(LentComponent);

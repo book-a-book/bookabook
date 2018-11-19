@@ -9,13 +9,13 @@ describe('EditBookModalComponent', () => {
   let component: EditBookModalComponent;
   let fixture: ComponentFixture<EditBookModalComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [EditBookModalComponent],
       imports: [FormsModule, ModalModule.forRoot()]
     })
       .compileComponents();
-  }));
+  });
 
   beforeEach(() => {
     fixture = TestBed.createComponent(EditBookModalComponent);
