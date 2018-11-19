@@ -7,7 +7,7 @@ export class AppConfig {
 
     get apiUrl() {
         const hostname = window.location.hostname;
-        const port = isDevMode() ? ':3000' : '/api';
-        return `https://${hostname}${port}`;
+	const apiUrl = isDevMode() ? 'http://${hostname}:3000' : 'https://${hostname}/api';
+        return apiUrl;
     }
 };
