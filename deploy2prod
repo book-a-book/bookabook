@@ -5,8 +5,14 @@ NOW=$(date +"D%y%m%dT%T" | tr -d ":")
 
 cd /var/www/bookabook.tk/
 
-tar -czf production.bak/$NOW.tar.gz production
+tar -czf .web.bak/$NOW.tar.gz web
+rm web/* -rf
+scp -r stage-server:/var/www/bookabook.tk/web/* web/
 
-rm production/* -rf
-
-cp staging/* production -rf
+tar -czf .api.bak/$NOW.tar.gz api
+cd api
+pm2 stop --silent index
+rm * -rf
+scp -r stage-server:/var/www/bookabook.tk/api/* .
+npm install
+pm2 start --interpreter babel-node index.js
