@@ -9,13 +9,13 @@ describe('FeedbackRatingModalComponent', () => {
   let component: FeedbackRatingModalComponent;
   let fixture: ComponentFixture<FeedbackRatingModalComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [FeedbackRatingModalComponent],
       imports: [FormsModule, MDBBootstrapModule.forRoot(), ModalModule.forRoot()]
     })
       .compileComponents();
-  }));
+  });
 
   beforeEach(() => {
     fixture = TestBed.createComponent(FeedbackRatingModalComponent);

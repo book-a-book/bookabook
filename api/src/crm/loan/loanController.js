@@ -47,8 +47,12 @@ export const loanAccept = (req, res, next) => {
     if (req.user !== loan.owner) {
       return res.status(400).send({ message: "Bad request" });
     }
+<<<<<<< HEAD
 
     Book.findOne({ _id: loan.book }, function (err, book) {
+=======
+    Book.findOne({ _id: loan.book }, function(err, book) {
+>>>>>>> development
       if (err) {
         return res.status(400).send({ message: err });
       }
@@ -131,25 +135,31 @@ export const returnAcceptBook = (req, res, next) => {
 };
 
 export const loansPending = (req, res, next) => {
-  Loan.find({
-    $or: [{ owner: req.user }, { lentTo: req.user }],
-    $or: [{ status: 0 }, { status: 2 }],
-  }, (err, loans) => {
-    if (err) {
-      res.send(err);
+  Loan.find(
+    {
+      $or: [{ owner: req.user }, { lentTo: req.user }],
+      $or: [{ status: 0 }, { status: 2 }],
+    },
+    (err, loans) => {
+      if (err) {
+        res.send(err);
+      }
+      res.send(loans);
     }
-    res.send(loans);
-  });
+  );
 };
 
 export const loansActive = (req, res, next) => {
-  Loan.find({
-    $or: [{ 'owner': req.user }, { 'lentTo': req.user }],
-    status: 1,
-  }, (err, loans) => {
-    if (err) {
-      res.send(err);
+  Loan.find(
+    {
+      $or: [{ owner: req.user }, { lentTo: req.user }],
+      status: 1
+    },
+    (err, loans) => {
+      if (err) {
+        res.send(err);
+      }
+      res.send(loans);
     }
-    res.send(loans);
-  });
+  );
 };

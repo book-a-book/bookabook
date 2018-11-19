@@ -7,13 +7,13 @@ describe('PublicLayoutComponent', () => {
   let component: PublicLayoutComponent;
   let fixture: ComponentFixture<PublicLayoutComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [PublicLayoutComponent],
       imports: [RouterTestingModule],
     })
       .compileComponents();
-  }));
+  });
 
   beforeEach(() => {
     fixture = TestBed.createComponent(PublicLayoutComponent);

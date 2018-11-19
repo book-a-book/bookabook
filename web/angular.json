@@ -55,24 +55,7 @@
               "vendorChunk": false,
               "buildOptimizer": true
             },
-            "staging": {
-              "fileReplacements": [
-                {
-                  "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.stag.ts"
-                }
-              ],
-              "optimization": true,
-              "outputHashing": "all",
-              "sourceMap": false,
-              "extractCss": true,
-              "namedChunks": false,
-              "aot": true,
-              "extractLicenses": true,
-              "vendorChunk": false,
-              "buildOptimizer": true
-            },
-            "production": {
+            "prod": {
               "fileReplacements": [
                 {
                   "replace": "src/environments/environment.ts",
@@ -99,8 +82,8 @@
             "host": "0.0.0.0"
           },
           "configurations": {
-            "production": {
-              "browserTarget": "BookABook:build:production"
+            "prod": {
+              "browserTarget": "BookABook:build:prod"
             }
           }
         },
@@ -152,8 +135,8 @@
             "devServerTarget": "BookABook:serve"
           },
           "configurations": {
-            "production": {
-              "devServerTarget": "BookABook:serve:production"
+            "prod": {
+              "devServerTarget": "BookABook:serve:prod"
             }
           }
         },

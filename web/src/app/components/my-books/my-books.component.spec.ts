@@ -12,7 +12,7 @@ describe('MyBooksComponent', () => {
   let component: MyBooksComponent;
   let fixture: ComponentFixture<MyBooksComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [
         MyBooksComponent,
@@ -29,7 +29,7 @@ describe('MyBooksComponent', () => {
       ],
     })
       .compileComponents();
-  }));
+  });
 
   beforeEach(() => {
     fixture = TestBed.createComponent(MyBooksComponent);

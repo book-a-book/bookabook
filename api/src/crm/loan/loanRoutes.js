@@ -14,6 +14,13 @@ const routes = app => {
 
   app.route("/borrow-accept/:loanId").post(auth, loanAccept);
 
+<<<<<<< HEAD
+=======
+  app.route("/loans/pending").get(auth, loansPending);
+
+  app.route("/loans/active").get(auth, loansActive);
+
+>>>>>>> development
   app.route("/return/:loanId").post(auth, returnBook);
 
   app.route("/return-accept/:loanId").post(auth, returnAcceptBook);
