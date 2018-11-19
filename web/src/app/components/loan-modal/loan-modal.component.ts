@@ -14,6 +14,8 @@ export class LoanModalComponent {
   loan: Loan;
   book: Book;
   statuses = Status;
+  userId: String;
+  rating: Number;
   @Output() refresh = new EventEmitter<boolean>();
 
   @ViewChild('basicModal') modal: ModalDirective;
@@ -21,6 +23,10 @@ export class LoanModalComponent {
   constructor(
     private loanService: LoanService,
   ) { }
+
+  ngOnInit() {
+    this.userId = localStorage.getItem('userId');
+  }
 
   open() {
     this.modal.show();
@@ -47,6 +53,16 @@ export class LoanModalComponent {
     return Status.AVAILABLE;
   }
 
+  get seeFeedback(): Boolean {
+    if (this.status === Status.LENT && this.book.owner != this.userId) {
+      return true;
+    }
+    if (this.status === Status.RETURNED && this.book.owner == this.userId) {
+      return true;
+    }
+    return false
+  }
+
   request() {
     this.loanService.borrow(this.book._id)
       .subscribe((loan: Loan) => {
@@ -62,16 +78,20 @@ export class LoanModalComponent {
   }
 
   return() {
-    this.loanService.return(this.loan._id)
+    this.loanService.return(this.loan._id, this.rating)
       .subscribe((loan: Loan) => {
         this.close();
       });
   }
 
   returnAccept() {
-    this.loanService.returnAccept(this.loan._id)
+    this.loanService.returnAccept(this.loan._id, this.rating)
       .subscribe((loan: Loan) => {
         this.close();
       });
+  }
+
+  ratingChange(event) {
+    this.rating = event;
   }
 }

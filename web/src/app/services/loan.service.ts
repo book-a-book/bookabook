@@ -35,12 +35,12 @@ export class LoanService {
     return this.http.post<Loan>(this.config.apiUrl + '/borrow-accept/' + loanId, {}, this.jwt());
   }
 
-  return(loanId: String) {
-    return this.http.post<Loan>(this.config.apiUrl + '/return/' + loanId, {}, this.jwt());
+  return(loanId: String, rating: Number) {
+    return this.http.post<Loan>(this.config.apiUrl + '/return/' + loanId, { rating: rating }, this.jwt());
   }
 
-  returnAccept(loanId: String) {
-    return this.http.post<Loan>(this.config.apiUrl + '/return-accept/' + loanId, {}, this.jwt());
+  returnAccept(loanId: String, rating: Number) {
+    return this.http.post<Loan>(this.config.apiUrl + '/return-accept/' + loanId, { rating: rating }, this.jwt());
   }
 
 }
