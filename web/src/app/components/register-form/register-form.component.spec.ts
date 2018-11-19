@@ -7,22 +7,18 @@ import { AuthenticationService } from "../../services/authentication.service";
 import { HttpClientModule } from '@angular/common/http';
 import { RouterTestingModule } from '@angular/router/testing';
 
-
-
 describe('RegisterFormComponent', () => {
   let component: RegisterFormComponent;
   let fixture: ComponentFixture<RegisterFormComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [RegisterFormComponent],
       imports: [FormsModule, ModalModule.forRoot(), HttpClientModule, RouterTestingModule],
       providers: [AuthenticationService]
-
-
     })
       .compileComponents();
-  }));
+  });
 
   beforeEach(() => {
     fixture = TestBed.createComponent(RegisterFormComponent);

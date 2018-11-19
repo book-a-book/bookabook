@@ -10,14 +10,14 @@ describe('LoginComponent', () => {
   let component: LoginComponent;
   let fixture: ComponentFixture<LoginComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [LoginComponent],
       imports: [FormsModule, HttpClientModule, RouterTestingModule],
       providers: [AuthenticationService]
     })
       .compileComponents();
-  }));
+  });
 
   beforeEach(() => {
     fixture = TestBed.createComponent(LoginComponent);

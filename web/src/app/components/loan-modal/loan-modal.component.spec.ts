@@ -7,13 +7,13 @@ describe('LoanModalComponent', () => {
   let component: LoanModalComponent;
   let fixture: ComponentFixture<LoanModalComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [LoanModalComponent],
       imports: [MDBBootstrapModule.forRoot(), ModalModule.forRoot()]
     })
       .compileComponents();
-  }));
+  });
 
   beforeEach(() => {
     fixture = TestBed.createComponent(LoanModalComponent);

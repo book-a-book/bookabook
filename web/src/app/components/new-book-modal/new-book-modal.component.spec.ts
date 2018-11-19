@@ -8,13 +8,13 @@ describe('NewBookModalComponent', () => {
   let component: NewBookModalComponent;
   let fixture: ComponentFixture<NewBookModalComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [NewBookModalComponent],
       imports: [FormsModule, ModalModule.forRoot()]
     })
       .compileComponents();
-  }));
+  });
 
   beforeEach(() => {
     fixture = TestBed.createComponent(NewBookModalComponent);

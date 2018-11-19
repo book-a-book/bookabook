@@ -9,7 +9,7 @@ describe('MineComponent', () => {
   let component: MineComponent;
   let fixture: ComponentFixture<MineComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [MineComponent],
       imports: [
@@ -21,7 +21,7 @@ describe('MineComponent', () => {
       ],
     })
       .compileComponents();
-  }));
+  });
 
   beforeEach(() => {
     fixture = TestBed.createComponent(MineComponent);
