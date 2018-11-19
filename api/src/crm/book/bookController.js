@@ -87,7 +87,7 @@ export const deleteBook = (req, res) => {
 };
 
 export const getMyBooks = (req, res) => {
-  Book.find({ owner: req.user }, (err, books) => {
+  Book.find({ owner: req.user, lendTo: null }, (err, books) => {
     if (err) {
       res.send(err);
     }

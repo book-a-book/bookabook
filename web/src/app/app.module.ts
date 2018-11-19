@@ -3,7 +3,6 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from '@angular/cor
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
-import { CategoryComponent } from './components/category/category.component';
 import { HomeComponent } from './components/home/home.component';
 import { MyBooksComponent } from './components/my-books/my-books.component';
 import { PublicLayoutComponent } from './layouts/public-layout/public-layout.component';
@@ -23,11 +22,11 @@ import { LentComponent } from './components/my-books/lent/lent.component';
 import { MineComponent } from './components/my-books/mine/mine.component';
 import { LoginComponent } from './components/login/login.component';
 import { LoanModalComponent } from './components/loan-modal/loan-modal.component';
+import { RegisterFormComponent } from './components/register-form/register-form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CategoryComponent,
     HomeComponent,
     MyBooksComponent,
     LoginComponent,
@@ -42,6 +41,7 @@ import { LoanModalComponent } from './components/loan-modal/loan-modal.component
     NewBookModalComponent,
     FeedbackRatingModalComponent,
     LoanModalComponent,
+    RegisterFormComponent,
   ],
   imports: [
     routing,

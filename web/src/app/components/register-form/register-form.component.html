@@ -1,0 +1,65 @@
+<form class="text-center border border-light p-5">
+  <p class="h4 mb-4">Sign up</p>
+
+  <div class="offset-md-4 col-md-4">
+    <input
+      [(ngModel)]="name"
+      name="name"
+      type="text"
+      id="defaultRegisterFormFirstName"
+      class="form-control mb-4"
+      placeholder="First name"
+    />
+
+    <input
+      [(ngModel)]="lastName"
+      name="lastName"
+      type="text"
+      id="defaultRegisterFormLastName"
+      class="form-control mb-4"
+      placeholder="Last name"
+    />
+
+    <input
+      [(ngModel)]="username"
+      name="username"
+      type="email"
+      id="defaultRegisterFormEmail"
+      class="form-control mb-4"
+      placeholder="E-mail"
+    />
+
+    <input
+      [(ngModel)]="password"
+      name="password"
+      type="password"
+      id="defaultRegisterFormPassword"
+      class="form-control mb-4"
+      placeholder="Password"
+      aria-describedby="defaultRegisterFormPasswordHelpBlock"
+    />
+    <small
+      id="defaultRegisterFormPasswordHelpBlock"
+      class="form-text text-muted mb-4"
+    >
+      At least 8 characters and 1 digit
+    </small>
+  </div>
+
+  <!-- Sign up button -->
+  <button
+    class="btn btn-info my-4 btn-block"
+    type="button"
+    (click)="register()"
+  >
+    Sign in
+  </button>
+
+  <!-- Terms of service -->
+  <p>
+    By clicking <em>Sign up</em> you agree to our
+    <a href="" target="_blank">terms of service</a> and
+    <a href="" target="_blank">terms of service</a>.
+  </p>
+</form>
+<!-- Default form register -->
