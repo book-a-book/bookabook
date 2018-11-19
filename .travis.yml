@@ -30,6 +30,6 @@ script:
 - npm install
 - ng test --watch=false
 after_success:
-- ng build --env=production
+- ng build --configuration=prod
 - cd ..
 - bash _scripts/deploy.sh
