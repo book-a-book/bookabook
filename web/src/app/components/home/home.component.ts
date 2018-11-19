@@ -34,11 +34,22 @@ export class HomeComponent implements OnInit {
     this.modal.type = true;
   }
 
-  processBooks(books) {
-    books.forEach(book => {
-      if (!book.picture) return;
-      book.picture = book.picture.replace('public', `${this.config.apiUrl}`);
-    });
+  processBooks(books): Book[] {
+    return books
+      .filter((book: Book) => {
+        if (book.hasOwnProperty('lendTo') && book.lendTo) {
+          return false;
+        }
+        const userId = localStorage.getItem('userId');
+        if (userId && book.owner == userId) {
+          return false;
+        }
+        return true;
+      })
+      .map((book: Book) => {
+        book.picture = book.picture ? book.picture.replace('public', `${this.config.apiUrl}`) : book.picture;
+        return book;
+      });
   }
 
   getTopBooks() {
@@ -52,4 +63,16 @@ export class HomeComponent implements OnInit {
     this.modal.open();
   }
 
+  refreshBooks() {
+    this.bookService.getAll()
+      .subscribe(books => {
+        this.books = this.processBooks(books);
+      });
+
+    this.bookService.getAll()
+      .subscribe(topBooks => {
+        topBooks = topBooks.sort((a, b) => a.title < b.title ? -1 : 1);
+        this.topBooks = this.processBooks(topBooks);
+      });
+  }
 }
