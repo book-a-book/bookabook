@@ -2,12 +2,14 @@ import { HttpClient } from '@angular/common/http';
 import { AppConfig } from '../app.config';
 import { Loan } from '../models/Loan';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoanService {
+  private _loansService = new Subject<Loan>();
+  loans$ = this._loansService.asObservable();
 
   constructor(
     private http: HttpClient,
@@ -28,19 +30,35 @@ export class LoanService {
   }
 
   borrow(bookId: String) {
-    return this.http.post<Loan>(this.config.apiUrl + '/borrow/' + bookId, {}, this.jwt());
+    const observable = this.http.post<Loan>(this.config.apiUrl + '/borrow/' + bookId, {}, this.jwt());
+
+    observable.subscribe(loan => this._loansService.next(loan));
+
+    return observable;
   }
 
   borrowAccept(loanId: String) {
-    return this.http.post<Loan>(this.config.apiUrl + '/borrow-accept/' + loanId, {}, this.jwt());
+    const observable = this.http.post<Loan>(this.config.apiUrl + '/borrow-accept/' + loanId, {}, this.jwt());
+
+    observable.subscribe(loan => this._loansService.next(loan));
+
+    return observable;
   }
 
   return(loanId: String, rating: Number) {
-    return this.http.post<Loan>(this.config.apiUrl + '/return/' + loanId, { rating: rating }, this.jwt());
+    const observable = this.http.post<Loan>(this.config.apiUrl + '/return/' + loanId, { rating: rating }, this.jwt());
+
+    observable.subscribe(loan => this._loansService.next(loan));
+
+    return observable;
   }
 
   returnAccept(loanId: String, rating: Number) {
-    return this.http.post<Loan>(this.config.apiUrl + '/return-accept/' + loanId, { rating: rating }, this.jwt());
+    const observable = this.http.post<Loan>(this.config.apiUrl + '/return-accept/' + loanId, { rating: rating }, this.jwt()).share();
+
+    observable.subscribe(loan => this._loansService.next(loan));
+
+    return observable;
   }
 
 }

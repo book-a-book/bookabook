@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { LoanService } from 'src/app/services/loan.service';
 import { Loan } from 'src/app/models/Loan';
 import { AppConfig } from 'src/app/app.config';
+import { Status } from 'src/app/models/Status';
 
 @Component({
   selector: 'app-pending',
@@ -21,6 +22,7 @@ export class PendingComponent implements OnInit {
 
   ngOnInit() {
     this.refreshBooks();
+    this.loanService.loans$.subscribe(loan => this.updateLoan(loan));
   }
 
   processBooks() {
@@ -42,5 +44,12 @@ export class PendingComponent implements OnInit {
         this.loans = loans;
         this.processBooks();
       });
+  }
+
+  updateLoan(updatedLoan) {
+    const index = this.loans.indexOf(updatedLoan);
+    if (index > -1 && updatedLoan.status != Status.REQUESTED && updatedLoan.status != Status.RETURNED) {
+      this.loans.splice(index, 1);
+    }
   }
 }

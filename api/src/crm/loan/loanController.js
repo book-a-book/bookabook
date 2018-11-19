@@ -47,6 +47,7 @@ export const loanAccept = (req, res, next) => {
     if (req.user !== loan.owner) {
       return res.status(400).send({ message: "Bad request" });
     }
+
     Book.findOne({ _id: loan.book }, function (err, book) {
       if (err) {
         return res.status(400).send({ message: err });
