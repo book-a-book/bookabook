@@ -24,13 +24,8 @@ export class LoanService {
     return this.http.get<Loan[]>(this.config.apiUrl + '/loans/active', this.jwt());
   }
 
-  jwt() {
-    const token = localStorage.getItem('token');
-    return { headers: { 'Authorization': `Bearer ${token}` } };
-  }
-
   borrow(bookId: String) {
-    const observable = this.http.post<Loan>(this.config.apiUrl + '/borrow/' + bookId, {}, this.jwt());
+    const observable = this.http.post<Loan>(this.config.apiUrl + '/borrow/' + bookId, {}, this.jwt()).share();
 
     observable.subscribe(loan => this._loansService.next(loan));
 
@@ -38,7 +33,7 @@ export class LoanService {
   }
 
   borrowAccept(loanId: String) {
-    const observable = this.http.post<Loan>(this.config.apiUrl + '/borrow-accept/' + loanId, {}, this.jwt());
+    const observable = this.http.post<Loan>(this.config.apiUrl + '/borrow-accept/' + loanId, {}, this.jwt()).share();
 
     observable.subscribe(loan => this._loansService.next(loan));
 
@@ -46,7 +41,7 @@ export class LoanService {
   }
 
   return(loanId: String, rating: Number) {
-    const observable = this.http.post<Loan>(this.config.apiUrl + '/return/' + loanId, { rating: rating }, this.jwt());
+    const observable = this.http.post<Loan>(this.config.apiUrl + '/return/' + loanId, { rating: rating }, this.jwt()).share();
 
     observable.subscribe(loan => this._loansService.next(loan));
 
@@ -59,6 +54,11 @@ export class LoanService {
     observable.subscribe(loan => this._loansService.next(loan));
 
     return observable;
+  }
+
+  jwt() {
+    const token = localStorage.getItem('token');
+    return { headers: { 'Authorization': `Bearer ${token}` } };
   }
 
 }

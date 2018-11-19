@@ -85,13 +85,12 @@ export class LoanModalComponent {
   }
 
   returnAccept() {
+    console.log(this.rating);
     this.loanService.returnAccept(this.loan._id, this.rating)
-      .subscribe((loan: Loan) => {
-        this.close();
-      });
+      .subscribe((loan: Loan) => this.close());
   }
 
-  ratingChange(event) {
-    this.rating = event;
+  ratingChange(rating) {
+    this.rating = rating;
   }
 }

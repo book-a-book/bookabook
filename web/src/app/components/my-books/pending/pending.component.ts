@@ -47,9 +47,8 @@ export class PendingComponent implements OnInit {
   }
 
   updateLoan(updatedLoan) {
-    const index = this.loans.indexOf(updatedLoan);
-    if (index > -1 && updatedLoan.status != Status.REQUESTED && updatedLoan.status != Status.RETURNED) {
-      this.loans.splice(index, 1);
+    if (updatedLoan.status == Status.RETURNED) {
+      this.refreshBooks();
     }
   }
 }

@@ -89,8 +89,10 @@ export const returnBook = (req, res, next) => {
         return res.send(err);
       }
     });
-    // addLendRate(loan.owner, req.body.rate);
-    res.json(loan);
+
+    addLendRate(loan.owner, req.body.rating)
+      .then(response => res.json(loan))
+      .catch(err => res.send(err));
   });
 };
 
@@ -122,9 +124,9 @@ export const returnAcceptBook = (req, res, next) => {
       });
     });
 
-    // addBorrowRate(loan.lentTo, req.body.rate)
-    //   .then(response => res.json(loan))
-    //   .catch(err => res.send(err));
+    addBorrowRate(loan.lentTo, req.body.rating)
+      .then(response => res.json(loan))
+      .catch(err => res.send(err));
   });
 };
 
