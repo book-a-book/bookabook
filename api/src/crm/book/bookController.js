@@ -19,8 +19,8 @@ export const addNewBooks = (req, res) => {
   const books = req.body;
 
   addBooks(books, req.user)
-    .then(response => res.json({ message: 'Successfully added all books' }))
-    .catch(err => res.status(500).send('Cannot save books'))
+    .then(response => res.json({ message: "Successfully added all books" }))
+    .catch(err => res.status(500).send("Cannot save books"));
 };
 
 async function addBooks(books, owner) {
@@ -40,6 +40,18 @@ export const getBooks = (req, res) => {
     }
     res.json(book);
   });
+};
+
+export const getAviableBooks = (req, res) => {
+  Book.find(
+    { lendTo: null, owner: { $not: { $eq: req.user } } },
+    (err, book) => {
+      if (err) {
+        res.send(err);
+      }
+      res.json(book);
+    }
+  );
 };
 
 export const getBookWithID = (req, res) => {
@@ -66,7 +78,7 @@ export const updateBook = (req, res) => {
 };
 
 export const deleteBook = (req, res) => {
-  Book.remove({ _id: req.params.bookId }, (err, book) => {
+  Book.remove({ _id: req.params.bookId, owner: req.user }, (err, book) => {
     if (err) {
       res.send(err);
     }
