@@ -1,44 +1,16 @@
-<button type="button" mdbBtn color="secondary" class="relative waves-light" (click)="basicModal.show()" mdbWavesEffect>
-  Califica este prestamo
-</button>
+<fieldset class="rating">
+  <input type="radio" [name]="inputName" value="5" [checked]="rating===5" />
+  <label title="Rocks!" (click)='onClick(5)'></label>
 
-<div mdbModal #basicModal="mdbModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myBasicModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close pull-right" aria-label="Close" (click)="basicModal.hide()">
-          <span aria-hidden="true">×</span>
-        </button>
-        <h4 class="modal-title w-100" id="myModalLabel">Editar libro</h4>
-      </div>
-      <div class="modal-body">
-        <div>
-          <h2>Como estuvo tu libro??</h2>
-          <fieldset class="rating">
-            <input type="radio" [name]="inputName" value="5" [checked]="rating===5" />
-            <label title="Rocks!" (click)='onClick(5)'></label>
+  <input type="radio" [name]="inputName" value="4" [checked]="rating===4" />
+  <label title="Pretty good" (click)='onClick(4)'></label>
 
-            <input type="radio" [name]="inputName" value="4" [checked]="rating===4" />
-            <label title="Pretty good" (click)='onClick(4)'></label>
+  <input type="radio" [name]="inputName" value="3" [checked]="rating===3" />
+  <label title="Meh" (click)='onClick(3)'></label>
 
-            <input type="radio" [name]="inputName" value="3" [checked]="rating===3" />
-            <label title="Meh" (click)='onClick(3)'></label>
+  <input type="radio" [name]="inputName" value="2" [checked]="rating===2" />
+  <label title="Kinda bad" (click)='onClick(2)'></label>
 
-            <input type="radio" [name]="inputName" value="2" [checked]="rating===2" />
-            <label title="Kinda bad" (click)='onClick(2)'></label>
-
-            <input type="radio" [name]="inputName" value="1" [checked]="rating===1" />
-            <label title="Sucks big time" (click)='onClick(1)'></label>
-          </fieldset>
-        </div>
-
-        <h3>Tus comentarios son de ayuda!</h3>
-        <textarea [(ngModel)]="comments" name="comments"></textarea>
-
-      </div>
-      <div class="modal-footer">
-        <button class="btn btn-default btn-rounded" (click)="sendFeedback()">Calificar</button>
-      </div>
-    </div>
-  </div>
-</div>
+  <input type="radio" [name]="inputName" value="1" [checked]="rating===1" />
+  <label title="Sucks big time" (click)='onClick(1)'></label>
+</fieldset>

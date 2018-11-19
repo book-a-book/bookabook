@@ -1,6 +1,6 @@
 language: node_js
 node_js:
-- stable
+- 10.12.0
 env:
   global:
   - CHROME_BIN=/usr/bin/google-chrome
@@ -9,9 +9,7 @@ git:
   depth: 1
 addons:
   chrome: stable
-  ssh_known_hosts:
-  - staging.bookabook.tk
-  - api.staging.bookabook.tk
+  ssh_known_hosts: stage.bookabook.tk
 cache:
   directories:
   - web/node_modules
@@ -32,6 +30,6 @@ script:
 - npm install
 - ng test --watch=false
 after_success:
-- ng build
+- ng build --configuration=prod
 - cd ..
 - bash _scripts/deploy.sh

@@ -1,7 +1,8 @@
 <div class="offset-md-4 col-md-4 mt-5">
     <form class="text-center p-5 card" (ngSubmit)="login()" ngNativeValidate>
 
-        <p class="h4 mb-4">Bienvenidos a Book a Book!</p>
+        <input type="text" [(ngModel)]="username" name="username" class="form-control mb-4" placeholder="Usuario"
+            required />
 
         <input type="text" [(ngModel)]="username" name="username" class="form-control mb-4" placeholder="Usuario"
             required>

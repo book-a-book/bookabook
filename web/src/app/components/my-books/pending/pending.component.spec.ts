@@ -8,14 +8,14 @@ describe('PendingComponent', () => {
   let component: PendingComponent;
   let fixture: ComponentFixture<PendingComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [PendingComponent],
       imports: [HttpClientModule],
       providers: [AppConfig],
     })
       .compileComponents();
-  }));
+  });
 
   beforeEach(() => {
     fixture = TestBed.createComponent(PendingComponent);

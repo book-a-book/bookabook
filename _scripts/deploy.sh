@@ -5,7 +5,7 @@ if [ $TRAVIS_BRANCH == 'development' ] ; then
     cd web/dist/BookABook 
     git init
         
-    git remote add deploy-web "deploy@staging.bookabook.tk:/var/www/bookabook.tk/.git/"
+    git remote add deploy-web "deploy@stage.bookabook.tk:/var/www/bookabook.tk/.git_web/"
     git config user.name "Travis CI"
     git config user.email "foliverafreire@gmail.com"
     
@@ -17,7 +17,7 @@ if [ $TRAVIS_BRANCH == 'development' ] ; then
     cd ../../../api/
     git init
 
-    git remote add deploy-api "deploy@api.staging.bookabook.tk:/var/www/bookabook.tk/.git/"
+    git remote add deploy-api "deploy@stage.bookabook.tk:/var/www/bookabook.tk/.git_api/"
     git config user.name "Travis CI"
     git config user.email "foliverafreire@gmail.com"
 
