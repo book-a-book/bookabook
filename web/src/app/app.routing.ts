@@ -2,7 +2,6 @@ import { RegisterFormComponent } from "./components/register-form/register-form.
 import { Component } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
 
-import { CategoryComponent } from "./components/category/category.component";
 import { HomeComponent } from "./components/home/home.component";
 import { UserLayoutComponent } from "./layouts/user-layout/user-layout.component";
 import { PublicLayoutComponent } from "./layouts/public-layout/public-layout.component";
@@ -20,12 +19,6 @@ const USER_ROUTES: Routes = [
   {
     path: "home",
     component: HomeComponent,
-    canActivate: [AuthGuard],
-    data: { role: ["user"] }
-  },
-  {
-    path: "categorias",
-    component: CategoryComponent,
     canActivate: [AuthGuard],
     data: { role: ["user"] }
   },
