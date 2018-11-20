@@ -3,6 +3,7 @@ import { Book, Loan } from 'src/app/models';
 import { Status } from 'src/app/models/Status';
 import { LoanService } from 'src/app/services/loan.service';
 import { ModalDirective } from 'angular-bootstrap-md';
+import { BookService } from 'src/app/services/book.service';
 
 @Component({
   selector: 'loan-modal',
@@ -22,6 +23,7 @@ export class LoanModalComponent {
 
   constructor(
     private loanService: LoanService,
+    private bookService: BookService,
   ) { }
 
   ngOnInit() {
@@ -92,5 +94,12 @@ export class LoanModalComponent {
 
   ratingChange(rating) {
     this.rating = rating;
+  }
+
+  delete() {
+    this.bookService.delete(this.book._id)
+      .subscribe(() => {
+        this.close();
+      });
   }
 }

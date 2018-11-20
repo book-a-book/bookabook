@@ -12,6 +12,7 @@ import { Status } from 'src/app/models/Status';
 export class PendingComponent implements OnInit {
 
   loans: Loan[];
+  userId: String;
 
   @ViewChild('modal') modal;
 
@@ -23,6 +24,7 @@ export class PendingComponent implements OnInit {
   ngOnInit() {
     this.refreshBooks();
     this.loanService.loans$.subscribe(loan => this.updateLoan(loan));
+    this.userId = localStorage.getItem('userId');
   }
 
   processBooks() {

@@ -30,6 +30,10 @@ export class BookService {
         return this.http.get<Book[]>(this.config.apiUrl + '/books/mine', this.jwt());
     }
 
+    delete(id: String) {
+        return this.http.delete(this.config.apiUrl + '/books/' + id, this.jwt());
+    }
+
     jwt() {
         const token = localStorage.getItem('token');
         return { headers: { 'Authorization': `Bearer ${token}` } };

@@ -1,14 +1,18 @@
 import { Injectable } from "@angular/core";
-import { environment } from "src/environments/environment";
-import { HttpClient, HttpResponse } from "@angular/common/http";
+import { HttpClient } from "@angular/common/http";
 import "rxjs/add/operator/map";
+import { AppConfig } from "../app.config";
 
 @Injectable()
 export class AuthenticationService {
-  constructor(private http: HttpClient) {}
+
+  constructor(
+    private http: HttpClient,
+    private config: AppConfig,
+  ) { }
 
   register(name: string, lastName: string, username: string, password: string) {
-    return this.http.post(environment.baseUrl + "/register", {
+    return this.http.post(this.config.apiUrl + "/register", {
       name: name,
       lastName: lastName,
       username: username,
@@ -17,13 +21,13 @@ export class AuthenticationService {
   }
 
   login(email: string, password: string) {
-    return this.http.post(environment.baseUrl + "/login", {
+    return this.http.post(this.config.apiUrl + "/login", {
       username: email,
       password: password
     });
   }
 
-  logout() {}
+  logout() { }
 
   can(roles: string[]) {
     return true;
