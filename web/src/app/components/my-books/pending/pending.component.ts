@@ -14,6 +14,7 @@ export class PendingComponent implements OnInit {
 
   loans: Loan[];
   users: User[];
+  userId: String;
 
   @ViewChild('modal') modal;
 
@@ -25,6 +26,7 @@ export class PendingComponent implements OnInit {
   ngOnInit() {
     this.refreshBooks();
     this.loanService.loans$.subscribe(loan => this.updateLoan(loan));
+    this.userId = localStorage.getItem('userId');
   }
 
   processBooks() {

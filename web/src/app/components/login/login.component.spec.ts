@@ -5,6 +5,7 @@ import { AuthenticationService } from 'src/app/services/authentication.service';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterTestingModule } from '@angular/router/testing';
+import { AppConfig } from 'src/app/app.config';
 
 describe('LoginComponent', () => {
   let component: LoginComponent;
@@ -14,7 +15,10 @@ describe('LoginComponent', () => {
     TestBed.configureTestingModule({
       declarations: [LoginComponent],
       imports: [FormsModule, HttpClientModule, RouterTestingModule],
-      providers: [AuthenticationService]
+      providers: [
+        AuthenticationService,
+        AppConfig,
+      ]
     })
       .compileComponents();
   });

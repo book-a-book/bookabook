@@ -11,12 +11,14 @@ export class MineComponent implements OnInit {
 
   books: Book[];
   users: User[];
+  userId: String;
 
   constructor(
     private bookService: BookService,
   ) { }
 
   ngOnInit() {
+    this.userId = localStorage.getItem('userId');
     this.bookService.getMyBooks()
       .subscribe((books: Book[]) => this.processBooks(books));
   }

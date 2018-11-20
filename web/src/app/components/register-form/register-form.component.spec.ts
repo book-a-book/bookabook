@@ -6,6 +6,7 @@ import { ModalModule } from 'angular-bootstrap-md';
 import { AuthenticationService } from "../../services/authentication.service";
 import { HttpClientModule } from '@angular/common/http';
 import { RouterTestingModule } from '@angular/router/testing';
+import { AppConfig } from 'src/app/app.config';
 
 describe('RegisterFormComponent', () => {
   let component: RegisterFormComponent;
@@ -15,7 +16,10 @@ describe('RegisterFormComponent', () => {
     TestBed.configureTestingModule({
       declarations: [RegisterFormComponent],
       imports: [FormsModule, ModalModule.forRoot(), HttpClientModule, RouterTestingModule],
-      providers: [AuthenticationService]
+      providers: [
+        AuthenticationService,
+        AppConfig,
+      ]
     })
       .compileComponents();
   });
