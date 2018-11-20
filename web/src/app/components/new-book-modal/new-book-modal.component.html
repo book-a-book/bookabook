@@ -2,7 +2,8 @@
   <i class="fa fa-plus-circle"></i>
 </button>
 
-<div mdbModal #basicModal="mdbModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myBasicModalLabel" aria-hidden="true">
+<div mdbModal #basicModal="mdbModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myBasicModalLabel"
+  aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -12,7 +13,7 @@
         <h4 class="modal-title w-100" id="myModalLabel">Crear libro</h4>
       </div>
       <div class="modal-body">
-        <form (ngSubmit)="onSubmit()">
+        <form>
           <div class="form-group">
             <label for="titulo">Titulo</label>
             <input type="text" class="form-control" [(ngModel)]="title" name="title" id="title">
@@ -32,8 +33,10 @@
             <label for="fecha">Link a imagen de portada</label>
             <input type="text" class="form-control" [(ngModel)]="imgLink" name="imgLink" id="imgLink">
 
-            <button type="button" mdbBtn color="secondary" class="waves-light" aria-label="Close" (click)="basicModal.hide()" mdbWavesEffect>Salir</button>
-            <button type="button" mdbBtn color="primary" class="relative waves-light" (click)="saveBook()" mdbWavesEffect>Guardar</button>
+            <button type="button" mdbBtn color="secondary" class="waves-light" aria-label="Close" (click)="basicModal.hide()"
+              mdbWavesEffect>Salir</button>
+            <button type="button" mdbBtn color="primary" class="relative waves-light" (click)="saveBook()"
+              mdbWavesEffect>Guardar</button>
           </div>
         </form>
       </div>

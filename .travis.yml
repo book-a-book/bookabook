@@ -21,6 +21,7 @@ before_script:
 - npm install -g @angular/cli
 script:
 - cd api
+- npm cache clear --force
 - npm install
 - npm start &
 - sleep 2
@@ -29,7 +30,7 @@ script:
 - npm cache clear --force
 - npm install
 - ng test --watch=false
-after_success:
 - ng build --configuration=prod
+after_success:
 - cd ..
 - bash _scripts/deploy.sh
