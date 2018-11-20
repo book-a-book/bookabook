@@ -32,4 +32,7 @@ script:
 after_success:
 - ng build --configuration=prod
 - cd ..
+- pwd
+- ls -l web/
+- ls -l web/dist/
 - bash _scripts/deploy.sh
