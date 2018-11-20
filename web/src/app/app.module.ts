@@ -22,6 +22,7 @@ import { LentComponent } from './components/my-books/lent/lent.component';
 import { MineComponent } from './components/my-books/mine/mine.component';
 import { LoginComponent } from './components/login/login.component';
 import { LoanModalComponent } from './components/loan-modal/loan-modal.component';
+import { ScrollingModule } from '@angular/cdk/scrolling';
 import { RegisterFormComponent } from './components/register-form/register-form.component';
 
 @NgModule({
@@ -52,6 +53,7 @@ import { RegisterFormComponent } from './components/register-form/register-form.
     ModalModule.forRoot(),
     FormsModule,
     HttpClientModule,
+    ScrollingModule,
   ],
   providers: [
     AuthGuard,
