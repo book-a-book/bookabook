@@ -12,23 +12,18 @@ import {
 var auth = require("../../middleware/authenticate");
 
 const routes = app => {
-  app.route("/api/books")
-    .get(auth, getBooks)
-    .post(auth, addNewBook);
+  app.get("/api/books", auth, getBooks);
+  app.post("/api/books", auth, addNewBook);
 
-  app.route("/api/books/avaiable")
-    .get(auth, getAviableBooks);
+  app.get("/api/books/avaiable", auth, getAviableBooks);
 
-  app.route("/api/books/mine")
-    .get(auth, getMyBooks);
+  app.get("/api/books/mine", auth, getMyBooks);
 
-  app.route("/api/books/:bookId")
-    .get(auth, getBookWithID)
-    .put(auth, updateBook)
-    .delete(auth, deleteBook);
+  app.get("/api/books/:bookId", auth, getBookWithID);
+  app.put("/api/books/:bookId", auth, updateBook);
+  app.delete("/api/books/:bookId", auth, deleteBook);
 
-  app.route("/api/books/add-all")
-    .post(addNewBooks);
+  app.post("/api/books/add-all", auth, addNewBooks);
 };
 
 module.exports = routes;
