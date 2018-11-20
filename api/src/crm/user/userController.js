@@ -53,7 +53,7 @@ export const userLogin = (req, res) => {
 export const addLendRate = (user, rate) => {
   User.findOne({ _id: user }, function(err, user) {
     if (err) {
-      return false;
+      return true;
     }
 
     let totalRate = user.rating * user.total;
@@ -65,8 +65,11 @@ export const addLendRate = (user, rate) => {
     user.rating = (totalRate + rate) / user.total;
 
     user.save((err, user) => {
+      console.log(err);
+      console.log(user);
+
       if (err) {
-        return false;
+        return true;
       }
     });
     return user;
@@ -76,7 +79,7 @@ export const addLendRate = (user, rate) => {
 export const addBorrowRate = (user, rate) => {
   User.findOne({ _id: user }, function(err, user) {
     if (err) {
-      return false;
+      return true;
     }
 
     let totalRate = user.rating * user.total;
@@ -89,7 +92,7 @@ export const addBorrowRate = (user, rate) => {
 
     user.save((err, user) => {
       if (err) {
-        return false;
+        return true;
       }
     });
     return user;

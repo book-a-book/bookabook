@@ -88,7 +88,7 @@ export const returnBook = (req, res, next) => {
         return res.send(err);
       }
     });
-    if (addLendRate(loan.owner, req.body.rate)) {
+    if (!addLendRate(loan.owner, req.body.rate)) {
       res.json(loan);
     } else {
       return res.status(400).send({ message: "Bad request" });
@@ -122,7 +122,7 @@ export const returnAcceptBook = (req, res, next) => {
         }
       });
     });
-    if (addBorrowRate(loan.lentTo, req.body.rate)) {
+    if (!addBorrowRate(loan.lentTo, req.body.rate)) {
       res.json(loan);
     } else {
       return res.status(400).send({ message: "Bad request" });
