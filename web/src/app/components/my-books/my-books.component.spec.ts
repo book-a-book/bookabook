@@ -10,6 +10,8 @@ import { BookService } from 'src/app/services/book.service';
 import { LoanModalComponent } from '../loan-modal/loan-modal.component';
 import { FeedbackRatingModalComponent } from '../feedback-rating-modal/feedback-rating-modal.component';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
+import { UserRatingComponent } from '../user-rating/user-rating.component';
+import { UserService } from 'src/app/services/user.service';
 
 describe('MyBooksComponent', () => {
   let component: MyBooksComponent;
@@ -24,6 +26,7 @@ describe('MyBooksComponent', () => {
         MineComponent,
         LoanModalComponent,
         FeedbackRatingModalComponent,
+        UserRatingComponent,
       ],
       imports: [
         HttpClientModule,
@@ -32,6 +35,7 @@ describe('MyBooksComponent', () => {
       providers: [
         AppConfig,
         BookService,
+        UserService,
       ],
     })
       .compileComponents();

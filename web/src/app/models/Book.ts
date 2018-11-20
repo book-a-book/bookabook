@@ -1,3 +1,5 @@
+import { User } from "./User";
+
 export class Book {
     _id: String;
     title: String;
@@ -8,5 +10,6 @@ export class Book {
     tags: String[];
     created_date: Date;
     owner: String;
+    ownerObj: User;
     lendTo: String;
 }

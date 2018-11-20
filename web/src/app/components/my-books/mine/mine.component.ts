@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Book } from 'src/app/models';
+import { Book, User } from 'src/app/models';
 import { BookService } from 'src/app/services/book.service';
 
 @Component({
@@ -10,6 +10,7 @@ import { BookService } from 'src/app/services/book.service';
 export class MineComponent implements OnInit {
 
   books: Book[];
+  users: User[];
   userId: String;
 
   constructor(
@@ -19,8 +20,11 @@ export class MineComponent implements OnInit {
   ngOnInit() {
     this.userId = localStorage.getItem('userId');
     this.bookService.getMyBooks()
-      .subscribe((books: Book[]) => {
-        this.books = books;
-      });
+      .subscribe((books: Book[]) => this.processBooks(books));
+  }
+
+  processBooks(books) {
+    this.books = books;
+    this.books.forEach(book => book.ownerObj = this.users.find(user => user._id == book.owner));
   }
 }

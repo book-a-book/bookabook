@@ -18,10 +18,15 @@
           <div class="col-md-7 text-center">
             <h2>{{book?.title}}</h2>
             <h4>{{book?.author}}</h4>
-
             <feedback-rating *ngIf="seeFeedback" (ratingClick)="ratingChange($event)"></feedback-rating>
           </div>
+
         </div>
+
+        <div class="col-md-12 text-center" *ngIf="book?.owner != userId">
+          <user-rating [user]="book?.ownerObj"></user-rating>
+        </div>
+
       </div>
       <div class="modal-footer">
         <button type="button" *ngIf="book?.owner == userId && status == statuses.AVAILABLE" mdbBtn color="danger" class="waves-light"

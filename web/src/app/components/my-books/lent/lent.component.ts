@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { Loan } from 'src/app/models';
+import { Loan, User } from 'src/app/models';
 import { LoanService } from 'src/app/services/loan.service';
 import { LoanModalComponent } from '../../loan-modal/loan-modal.component';
 import { AppConfig } from 'src/app/app.config';
@@ -13,6 +13,7 @@ import { Status } from 'src/app/models/Status';
 export class LentComponent implements OnInit {
 
   loans: Loan[];
+  users: User[];
   userId: String;
 
   @ViewChild('modal') modal: LoanModalComponent;
@@ -45,6 +46,7 @@ export class LentComponent implements OnInit {
   processBooks() {
     this.loans.forEach(loan => {
       if (!loan.bookObj.picture) return;
+      loan.bookObj.ownerObj = this.users.find(user => user._id == loan.bookObj.owner);
       loan.bookObj.picture = loan.bookObj.picture.replace('public', this.config.apiUrl);
     });
   }
