@@ -5,6 +5,8 @@ import { ModalModule, MDBBootstrapModule } from 'angular-bootstrap-md';
 import { FeedbackRatingModalComponent } from '../feedback-rating-modal/feedback-rating-modal.component';
 import { HttpClientModule } from '@angular/common/http';
 import { AppConfig } from 'src/app/app.config';
+import { LoanService } from 'src/app/services/loan.service';
+import { BookService } from 'src/app/services/book.service';
 
 describe('LoanModalComponent', () => {
   let component: LoanModalComponent;
@@ -23,6 +25,8 @@ describe('LoanModalComponent', () => {
       ],
       providers: [
         AppConfig,
+        LoanService,
+        BookService,
       ]
     })
       .compileComponents();
