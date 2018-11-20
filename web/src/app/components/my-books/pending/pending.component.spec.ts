@@ -7,6 +7,7 @@ import { LoanModalComponent } from '../../loan-modal/loan-modal.component';
 import { MDBBootstrapModule, ModalModule } from 'angular-bootstrap-md';
 import { FeedbackRatingModalComponent } from '../../feedback-rating-modal/feedback-rating-modal.component';
 import { BookService } from 'src/app/services/book.service';
+import { UserRatingComponent } from '../../user-rating/user-rating.component';
 
 describe('PendingComponent', () => {
   let component: PendingComponent;
@@ -18,6 +19,7 @@ describe('PendingComponent', () => {
         PendingComponent,
         LoanModalComponent,
         FeedbackRatingModalComponent,
+        UserRatingComponent,
       ],
       imports: [
         HttpClientModule,

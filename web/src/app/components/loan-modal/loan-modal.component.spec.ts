@@ -7,6 +7,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppConfig } from 'src/app/app.config';
 import { LoanService } from 'src/app/services/loan.service';
 import { BookService } from 'src/app/services/book.service';
+import { UserRatingComponent } from '../user-rating/user-rating.component';
 
 describe('LoanModalComponent', () => {
   let component: LoanModalComponent;
@@ -17,6 +18,7 @@ describe('LoanModalComponent', () => {
       declarations: [
         LoanModalComponent,
         FeedbackRatingModalComponent,
+        UserRatingComponent,
       ],
       imports: [
         MDBBootstrapModule.forRoot(),
