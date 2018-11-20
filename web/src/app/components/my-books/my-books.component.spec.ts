@@ -7,6 +7,9 @@ import { MineComponent } from './mine/mine.component';
 import { HttpClientModule } from '@angular/common/http';
 import { AppConfig } from 'src/app/app.config';
 import { BookService } from 'src/app/services/book.service';
+import { LoanModalComponent } from '../loan-modal/loan-modal.component';
+import { FeedbackRatingModalComponent } from '../feedback-rating-modal/feedback-rating-modal.component';
+import { MDBBootstrapModule } from 'angular-bootstrap-md';
 
 describe('MyBooksComponent', () => {
   let component: MyBooksComponent;
@@ -19,9 +22,12 @@ describe('MyBooksComponent', () => {
         LentComponent,
         PendingComponent,
         MineComponent,
+        LoanModalComponent,
+        FeedbackRatingModalComponent,
       ],
       imports: [
-        HttpClientModule
+        HttpClientModule,
+        MDBBootstrapModule.forRoot(),
       ],
       providers: [
         AppConfig,
