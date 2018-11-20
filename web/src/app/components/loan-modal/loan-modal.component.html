@@ -18,15 +18,30 @@
           <div class="col-md-7 text-center">
             <h2>{{book?.title}}</h2>
             <h4>{{book?.author}}</h4>
-          </div>
 
+            <feedback-rating *ngIf="seeFeedback" (ratingClick)="ratingChange($event)"></feedback-rating>
+          </div>
         </div>
       </div>
       <div class="modal-footer">
         <button type="button" mdbBtn color="secondary" class="waves-light" aria-label="Close" (click)="basicModal.hide()"
           mdbWavesEffect>Cancelar</button>
-        <button type="button" mdbBtn color="primary" class="relative waves-light" (click)="submit()" mdbWavesEffect>{{type
-          ? 'Pedir' : 'Prestar'}}</button>
+        <button type="button" *ngIf="status === statuses.AVAILABLE && book?.owner != userId" mdbBtn color="primary"
+          class="relative waves-light" (click)="request()" mdbWavesEffect>
+          Pedir
+        </button>
+        <button type="button" *ngIf="status === statuses.REQUESTED && book?.owner == userId" mdbBtn color="primary"
+          class="relative waves-light" (click)="requestAccept()" mdbWavesEffect>
+          Prestar
+        </button>
+        <button type="button" *ngIf="status === statuses.LENT && book?.owner != userId" mdbBtn color="primary" class="relative waves-light"
+          (click)="return()" mdbWavesEffect>
+          Devolver
+        </button>
+        <button type="button" *ngIf="status === statuses.RETURNED && book?.owner == userId" mdbBtn color="primary"
+          class="relative waves-light" (click)="returnAccept()" mdbWavesEffect>
+          Devuelto
+        </button>
       </div>
     </div>
   </div>

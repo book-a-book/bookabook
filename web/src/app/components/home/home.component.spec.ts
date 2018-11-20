@@ -6,6 +6,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppConfig } from 'src/app/app.config';
 import { LoanModalComponent } from '../loan-modal/loan-modal.component';
 import { ModalModule } from 'angular-bootstrap-md';
+import { FeedbackRatingModalComponent } from '../feedback-rating-modal/feedback-rating-modal.component';
 
 describe('HomeComponent', () => {
   let component: HomeComponent;
@@ -13,7 +14,7 @@ describe('HomeComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [HomeComponent, LoanModalComponent],
+      declarations: [HomeComponent, LoanModalComponent, FeedbackRatingModalComponent],
       imports: [HttpClientModule, ModalModule.forRoot()],
       providers: [BookService, AppConfig]
     })

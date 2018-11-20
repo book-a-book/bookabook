@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { LentComponent } from './lent/lent.component';
+import { PendingComponent } from './pending/pending.component';
+import { MineComponent } from './mine/mine.component';
 
 @Component({
   selector: 'app-my-books',
@@ -6,6 +9,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./my-books.component.scss']
 })
 export class MyBooksComponent implements OnInit {
+
+  @ViewChild('pending') pendingComponent: PendingComponent;
+  @ViewChild('lent') lentComponent: LentComponent;
+  @ViewChild('mine') mineComponent: MineComponent;
 
   constructor() { }
 
