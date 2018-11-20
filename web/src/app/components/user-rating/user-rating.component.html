@@ -3,18 +3,18 @@
 </div>
 
 <fieldset class="rating">
-  <input type="radio" [name]="inputName" value="5" [checked]="user?.rating > 4" />
+  <input type="radio" value="5" [checked]="user?.rating > 4" />
   <label title="Rocks!"></label>
 
-  <input type="radio" [name]="inputName" value="4" [checked]="user?.rating <= 4 && user?.rating > 3" />
+  <input type="radio" value="4" [checked]="user?.rating <= 4 && user?.rating > 3" />
   <label title="Pretty good"></label>
 
-  <input type="radio" [name]="inputName" value="3" [checked]="user?.rating <= 3 && user?.rating > 2" />
+  <input type="radio" value="3" [checked]="user?.rating <= 3 && user?.rating > 2" />
   <label title="Meh"></label>
 
-  <input type="radio" [name]="inputName" value="2" [checked]="user?.rating <= 2 && user?.rating > 1" />
+  <input type="radio" value="2" [checked]="user?.rating <= 2 && user?.rating > 1" />
   <label title="Kinda bad"></label>
 
-  <input type="radio" [name]="inputName" value="1" [checked]="user?.rating <= 1" />
+  <input type="radio" value="1" [checked]="user?.rating <= 1" />
   <label title="Sucks big time"></label>
 </fieldset>
