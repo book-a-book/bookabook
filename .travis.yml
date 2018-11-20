@@ -29,7 +29,7 @@ script:
 - npm cache clear --force
 - npm install
 - ng test --watch=false
-after_success:
 - ng build --configuration=prod
+after_success:
 - cd ..
 - bash _scripts/deploy.sh
