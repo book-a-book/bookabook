@@ -1,4 +1,4 @@
-<loan-modal #modal (refresh)="refreshBooks($event)"></loan-modal>
+<loan-modal #modal (refresh)="refreshBooks()"></loan-modal>
 
 <ul class="list-group card mb-4">
   <li *ngFor="let loan of loans" class="list-group-item d-flex justify-content-between align-items-center" (click)="openModal(loan)">
