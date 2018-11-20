@@ -21,6 +21,7 @@ before_script:
 - npm install -g @angular/cli
 script:
 - cd api
+- npm cache clear --force
 - npm install
 - npm start &
 - sleep 2
