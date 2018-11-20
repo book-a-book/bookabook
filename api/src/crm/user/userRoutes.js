@@ -7,16 +7,16 @@ import {
 var auth = require("../../middleware/authenticate");
 
 const routes = app => {
-  app.route("/register")
+  app.route("/api/register")
     .post(userRegist);
 
-  app.route("/login")
+  app.route("/api/login")
     .post(userLogin);
 
-  app.route("/user")
+  app.route("/api/user")
     .get(auth, getUsers);
 
-  app.route("/user/:id")
+  app.route("/api/user/:id")
     .get(auth, getUserWithID);
 };
 

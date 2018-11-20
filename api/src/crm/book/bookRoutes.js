@@ -12,22 +12,22 @@ import {
 var auth = require("../../middleware/authenticate");
 
 const routes = app => {
-  app.route("/books")
+  app.route("/api/books")
     .get(auth, getBooks)
     .post(auth, addNewBook);
 
-  app.route("/books/avaiable")
+  app.route("/api/books/avaiable")
     .get(auth, getAviableBooks);
 
-  app.route("/books/mine")
+  app.route("/api/books/mine")
     .get(auth, getMyBooks);
 
-  app.route("/books/:bookId")
+  app.route("/api/books/:bookId")
     .get(auth, getBookWithID)
     .put(auth, updateBook)
     .delete(auth, deleteBook);
 
-  app.route("books/add-all")
+  app.route("/api/books/add-all")
     .post(addNewBooks);
 };
 

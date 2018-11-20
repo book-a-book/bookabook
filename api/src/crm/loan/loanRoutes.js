@@ -10,22 +10,22 @@ import {
 var auth = require("../../middleware/authenticate");
 
 const routes = app => {
-  app.route("/borrow/:bookId")
+  app.route("/api/borrow/:bookId")
     .post(auth, loanRequest);
 
-  app.route("/borrow-accept/:loanId")
+  app.route("/api/borrow-accept/:loanId")
     .post(auth, loanAccept);
 
-  app.route("/return/:loanId")
+  app.route("/api/return/:loanId")
     .post(auth, returnBook);
 
-  app.route("/return-accept/:loanId")
+  app.route("/api/return-accept/:loanId")
     .post(auth, returnAcceptBook);
 
-  app.route("/loans/pending")
+  app.route("/api/loans/pending")
     .get(auth, loansPending);
 
-  app.route("/loans/active")
+  app.route("/api/loans/active")
     .get(auth, loansActive);
 };
 
