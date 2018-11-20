@@ -11,7 +11,7 @@ const routes = app => {
 
   app.post("/api/login", userLogin);
 
-  app.get("/api/user", auth, getUsers);
+  app.get("/api/users", auth, getUsers);
 
   app.get("/api/user/:id", auth, getUserWithID);
 };
