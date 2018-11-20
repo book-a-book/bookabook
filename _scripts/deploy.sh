@@ -1,6 +1,6 @@
 #!/bin/bash
 set -x
-if [ $TRAVIS_PULL_REQUEST == false && $TRAVIS_BRANCH == 'development' ] ; then
+if [ $TRAVIS_PULL_REQUEST == false ] && [ $TRAVIS_BRANCH == 'development' ] ; then
     # Initialize a new git repo in web/dist/BookABook, and push it to our server.
     cd web/dist/BookABook 
     git init
