@@ -6,6 +6,7 @@ import { AppConfig } from 'src/app/app.config';
 import { LoanModalComponent } from '../../loan-modal/loan-modal.component';
 import { MDBBootstrapModule, ModalModule } from 'angular-bootstrap-md';
 import { FeedbackRatingModalComponent } from '../../feedback-rating-modal/feedback-rating-modal.component';
+import { BookService } from 'src/app/services/book.service';
 
 describe('PendingComponent', () => {
   let component: PendingComponent;
@@ -23,7 +24,10 @@ describe('PendingComponent', () => {
         MDBBootstrapModule.forRoot(),
         ModalModule.forRoot(),
       ],
-      providers: [AppConfig],
+      providers: [
+        AppConfig,
+        BookService,
+      ],
     })
       .compileComponents();
   });
