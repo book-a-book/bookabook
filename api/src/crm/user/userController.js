@@ -30,7 +30,7 @@ export const userRegist = (req, res) => {
     password: ""
   });
   user.password = user.generateHash(req.body.password);
-  user.save(function(err) {
+  user.save(function (err) {
     if (err) {
       console.log(err);
       return res.status(400).send({ message: err });
@@ -41,7 +41,7 @@ export const userRegist = (req, res) => {
 };
 
 export const userLogin = (req, res) => {
-  User.findOne({ username: req.body.username }, function(err, user) {
+  User.findOne({ username: req.body.username }, function (err, user) {
     if (!user || !user.validPassword(req.body.password)) {
       res.status(400).json({ message: "Bad credentials" });
     } else {
@@ -50,35 +50,38 @@ export const userLogin = (req, res) => {
   });
 };
 
-export const addLendRate = (user, rate) => {
-  User.findOne({ _id: user }, function(err, user) {
+export const addLendRate = async (user, rate) => {
+  console.log(rate);
+  User.findOne({ _id: user }, function (err, user) {
     if (err) {
-      return res.status(400).send({ message: err });
+      return err;
     }
 
     let totalRate = user.rating * user.total;
+    if (!totalRate) totalRate = 0;
 
     user.lend += 1;
-
     user.total += 1;
 
     user.rating = (totalRate + rate) / user.total;
 
     user.save((err, user) => {
       if (err) {
-        return res.send(err);
+        return err;
       }
+      return true;
     });
   });
 };
 
-export const addBorrowRate = (user, rate) => {
-  User.findOne({ _id: user }, function(err, user) {
+export const addBorrowRate = async (user, rate) => {
+  User.findOne({ _id: user }, function (err, user) {
     if (err) {
-      return res.status(400).send({ message: err });
+      return err;
     }
 
     let totalRate = user.rating * user.total;
+    if (!totalRate) totalRate = 0;
 
     user.borrow += 1;
 
@@ -88,8 +91,9 @@ export const addBorrowRate = (user, rate) => {
 
     user.save((err, user) => {
       if (err) {
-        return res.send(err);
+        return err;
       }
+      return true;
     });
   });
 };

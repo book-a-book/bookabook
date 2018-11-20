@@ -4,6 +4,7 @@ import { MineComponent } from './mine.component';
 import { BookService } from 'src/app/services/book.service';
 import { HttpClientModule } from '@angular/common/http';
 import { AppConfig } from 'src/app/app.config';
+import { MDBBootstrapModule, ModalModule } from 'angular-bootstrap-md';
 
 describe('MineComponent', () => {
   let component: MineComponent;
@@ -14,6 +15,8 @@ describe('MineComponent', () => {
       declarations: [MineComponent],
       imports: [
         HttpClientModule,
+        MDBBootstrapModule.forRoot(),
+        ModalModule.forRoot(),
       ],
       providers: [
         AppConfig,
