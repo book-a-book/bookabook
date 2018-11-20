@@ -13,7 +13,7 @@ export class UserService {
     ) { }
 
     getById(id: string) {
-        return this.http.get<User>(this.config.apiUrl + '/users/' + id, this.jwt());
+        return this.http.get<User>(this.config.apiUrl + '/user/' + id, this.jwt());
     }
 
     getAll() {
