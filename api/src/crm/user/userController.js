@@ -53,7 +53,7 @@ export const userLogin = (req, res) => {
 export const addLendRate = (user, rate) => {
   User.findOne({ _id: user }, function(err, user) {
     if (err) {
-      return res.status(400).send({ message: err });
+      return false;
     }
 
     let totalRate = user.rating * user.total;
@@ -66,16 +66,17 @@ export const addLendRate = (user, rate) => {
 
     user.save((err, user) => {
       if (err) {
-        return res.send(err);
+        return false;
       }
     });
+    return user;
   });
 };
 
 export const addBorrowRate = (user, rate) => {
   User.findOne({ _id: user }, function(err, user) {
     if (err) {
-      return res.status(400).send({ message: err });
+      return false;
     }
 
     let totalRate = user.rating * user.total;
@@ -88,8 +89,9 @@ export const addBorrowRate = (user, rate) => {
 
     user.save((err, user) => {
       if (err) {
-        return res.send(err);
+        return false;
       }
     });
+    return user;
   });
 };

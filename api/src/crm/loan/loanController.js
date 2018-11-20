@@ -88,8 +88,11 @@ export const returnBook = (req, res, next) => {
         return res.send(err);
       }
     });
-    addLendRate(loan.owner, req.body.rate);
-    res.json(loan);
+    if (addLendRate(loan.owner, req.body.rate)) {
+      res.json(loan);
+    } else {
+      return res.status(400).send({ message: "Bad request" });
+    }
   });
 };
 export const returnAcceptBook = (req, res, next) => {
@@ -119,9 +122,11 @@ export const returnAcceptBook = (req, res, next) => {
         }
       });
     });
-    addBorrowRate(loan.lentTo, req.body.rate);
-
-    res.json(loan);
+    if (addBorrowRate(loan.lentTo, req.body.rate)) {
+      res.json(loan);
+    } else {
+      return res.status(400).send({ message: "Bad request" });
+    }
   });
 };
 
