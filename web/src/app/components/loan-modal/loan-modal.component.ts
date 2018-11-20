@@ -16,8 +16,8 @@ export class LoanModalComponent {
   statuses = Status;
   userId: String;
   rating: Number;
-  @Output() refresh = new EventEmitter<boolean>();
 
+  @Output() refresh = new EventEmitter<boolean>();
   @ViewChild('basicModal') modal: ModalDirective;
 
   constructor(

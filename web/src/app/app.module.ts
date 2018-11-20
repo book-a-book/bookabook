@@ -23,6 +23,8 @@ import { MineComponent } from './components/my-books/mine/mine.component';
 import { LoginComponent } from './components/login/login.component';
 import { LoanModalComponent } from './components/loan-modal/loan-modal.component';
 import { RegisterFormComponent } from './components/register-form/register-form.component';
+import { UserRatingComponent } from './components/user-rating/user-rating.component';
+import { UserService } from './services/user.service';
 
 @NgModule({
   declarations: [
@@ -42,6 +44,7 @@ import { RegisterFormComponent } from './components/register-form/register-form.
     FeedbackRatingModalComponent,
     LoanModalComponent,
     RegisterFormComponent,
+    UserRatingComponent,
   ],
   imports: [
     routing,
@@ -56,6 +59,7 @@ import { RegisterFormComponent } from './components/register-form/register-form.
   providers: [
     AuthGuard,
     BookService,
+    UserService,
     AppConfig,
     AuthenticationService,
   ],

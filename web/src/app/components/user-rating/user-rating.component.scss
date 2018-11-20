@@ -1,0 +1,47 @@
+.rating {
+    display: -webkit-inline-box;
+    text-align: center;
+}
+
+.rating:not(:checked)>input {
+    position: absolute;
+    top: -9999px;
+    clip: rect(0, 0, 0, 0);
+}
+
+.rating:not(:checked)>label {
+    float: right;
+    width: 1em;
+    padding: 0.1em;
+    white-space: nowrap;
+    font-size: 150%;
+    line-height: 1.2;
+    color: #ddd;
+}
+
+.rating:not(:checked)>label:before {
+    content: '★ ';
+}
+
+.rating>input:checked~label {
+    color: #f70;
+}
+
+textarea {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+fieldset {
+    margin: 0 auto;
+    text-align: left;
+}
+
+form {
+    text-align: center;
+}
+
+.modal-body {
+    text-align: center;
+}

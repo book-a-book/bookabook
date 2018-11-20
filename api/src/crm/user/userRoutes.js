@@ -11,9 +11,9 @@ const routes = app => {
 
   app.route("/login").post(userLogin);
 
-  app.route("/user").get(auth, getUsers);
+  app.route("/users").get(auth, getUsers);
 
-  app.route("/user/:id").get(auth, getUserWithID);
+  app.route("/users/:id").get(auth, getUserWithID);
 };
 
 module.exports = routes;
